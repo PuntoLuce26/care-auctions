@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pulizia cache</title></head>
+<body style="font-family:system-ui;background:#FDF6E3;color:#1A1A18;text-align:center;padding:4rem 1rem">
+<h1>🧹 Pulizia in corso…</h1>
+<p id="stato">Azzero cache e service worker.</p>
+<script>
+var registrazioni = [];
+navigator.serviceWorker.getRegistrations()
+  .then(function (rs) { registrazioni = rs; return Promise.all(rs.map(function (r) { return r.unregister(); })); })
+  .then(function () { return caches.keys(); })
+  .then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })
+  .then(function () {
+    document.getElementById("stato").textContent = "✅ Tutto pulito: cache e service worker azzerati. Torno alla home…";
+    setTimeout(function () { location.href = "/?reset=" + Date.now(); }, 1200);
+  })
+  .catch(function () {
+    document.getElementById("stato").textContent = "⚠️ Pulizia parziale: fai ⌘⌥R sulla home.";
+  });
+</script></body></html>
