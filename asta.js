@@ -133,7 +133,7 @@
       list('a-summary', summaryEn(r, d));
       var risks = r.rischi.length ? r.rischi.map(function (x) { return riskEn(x, r, d); }) : [];
       // Vincoli che sopravvivono alla vendita + tipo di acquisto (regola di Gianluca)
-      risks.push('Check the sale notice: constraints that survive the sale (servitudes, usufruct, condominium charges) are NOT cancelled by the auction.');
+      risks.push('Check the sale notice: constraints that survive the sale (servitudes, usufruct, condominium charges) are NOT cancelled by the auction — especially a HABITATION RIGHT of a spouse/ex-spouse/children: it must be eliminated at the root, never inherited.');
       var tipo = $('a-tipo') ? $('a-tipo').value : 'piena';
       if (tipo === 'nuda') risks.push('Bare ownership selected: verify the usufructuary and the value basis in the notice; taxes on bare ownership differ.');
       if (!risks.length) risks = ['No flags.'];
