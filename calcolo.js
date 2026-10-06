@@ -251,7 +251,7 @@
     { k: 'valoreMercato', etichetta: 'Valore di mercato stimato', tipo: 'euro' },
     { k: 'prezzoOfferto', etichetta: 'Prezzo che si intende offrire', tipo: 'euro' },
     { k: 'ristrutturazione', etichetta: 'Ristrutturazione prevista', tipo: 'euro', zero: true },
-    { k: 'difformita', etichetta: 'Difformità (costo sanatoria)', tipo: 'euro', zero: true },
+    { k: 'difformita', etichetta: "Difformità (a carico dell'aggiudicatario)", tipo: 'euro', zero: true },
     { k: 'notaio', etichetta: 'Notaio', tipo: 'euro', zero: true },
     { k: 'consulenza', etichetta: 'Consulenza', tipo: 'euro', zero: true }
   ];
