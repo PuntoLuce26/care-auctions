@@ -182,9 +182,18 @@
     if (!text) return;
     // Testo dell'utente: solo textContent (in addBubble → el), mai innerHTML.
     addBubble([text], "user").lastChild.dir = "auto";
-    addVoice(addBubble([M[lang].fallback], "bot"));
     input.value = "";
-    addMenu(M[lang].menuPrompt);
+    var PROXY = "https://icare-ai.misty-mode-1cbc.workers.dev";
+    fetch(PROXY, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messaggio: text, lingua: lang }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        addVoice(addBubble([d.risposta || M[lang].fallback], "bot"));
+        addMenu(M[lang].menuPrompt);
+      })
+      .catch(function () {
+        addVoice(addBubble([M[lang].fallback], "bot"));
+        addMenu(M[lang].menuPrompt);
+      });
   });
 
   if (synth) {
