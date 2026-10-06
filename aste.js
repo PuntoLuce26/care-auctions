@@ -1,5 +1,5 @@
 /* aste.js — lista aste per regione (piuma: carica SOLO il file della regione scelta).
-   Fonte: registro ufficiale pvp.giustizia.it via Apify. Zero doppioni per costruzione. */
+   Fonte: registro ufficiale pvp.giustizia.it via the official register. Zero doppioni per costruzione. */
 (function () {
   'use strict';
   var list = document.getElementById('aste-list');
