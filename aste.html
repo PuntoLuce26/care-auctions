@@ -49,7 +49,7 @@
     </div>
 
     <div class="notice" role="note">
-      <p><span class="tag">Live data</span> <strong>Real auctions from pvp.giustizia.it, via Apify.</strong></p>
+      <p><span class="tag">Live data</span> <strong>8.269 real auctions from pvp.giustizia.it, via Apify — all of Italy.</strong></p>
       <p>Always verify the official notice before any decision.</p>
     </div>
 
@@ -57,20 +57,9 @@
       <p><strong>What to do now:</strong> pick an auction and open its sheet. Then type in the figures from the court notice to get the maximum bid with a 5% margin.</p>
     </div>
 
-    <!-- TODO: filtro non funzionante. Da collegare ai dati Apify PVP quando l'import sarà attivo. -->
-    <form class="no-print" id="filter-form" aria-labelledby="filter-title">
-      <fieldset>
-        <legend id="filter-title">Filter <span class="tag">TODO — not working yet</span></legend>
-        <div class="grid">
-          <label for="f-region">Region<select id="f-region" disabled><option>All regions</option></select></label>
-          <label for="f-max">Maximum starting price (€)<input type="number" id="f-max" disabled></label>
-          <label for="f-type">Property type<select id="f-type" disabled><option>All types</option></select></label>
-        </div>
-        <p class="small">Filters will work once the real auction import is connected.</p>
-      </fieldset>
-    </form>
+    
 
-    <h2>Auction list <span class="tag">Live · Sardinia</span></h2>
+    <h2>Auction list <span class="tag" id="lista-tag">Live · 20 regions of Italy</span></h2>
     <ul class="cards" id="aste-list">
       <li class="card">
         <p><span class="tag tag-solid">Demo data</span></p>
