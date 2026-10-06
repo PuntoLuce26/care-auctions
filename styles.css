@@ -1004,3 +1004,18 @@ body.home .site-footer { margin-top: 0; border-top-color: transparent; backgroun
 
 .home-title { font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.2rem); font-weight: 600; letter-spacing: -0.01em; margin: 0 0 .5rem; color: var(--ink, #1A1A18); }
 .home-tagline { font-size: 1.05rem; color: var(--muted, #555); margin: 0 0 1.5rem; }
+
+/* ── GARANZIA HOME (Sam 5.0) ── centratura assoluta, sovrascrive ogni regola */
+main#main.container > .home-welcome {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+.home-welcome .home-title { width: 100%; text-align: center; }
+.home-welcome .home-ask { margin-left: auto !important; margin-right: auto !important; width: 100% !important; max-width: 40rem !important; }
+.home-welcome .home-trust, .home-welcome .home-match { width: 100%; text-align: center; }
