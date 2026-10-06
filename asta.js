@@ -140,8 +140,8 @@
 
       C.CAMPI_SCHEDA.forEach(function (c) {
         row(tData, LABELS_EN[c.k], show(c, d[c.k]), d[c.k] === '' ? 'missing' : '');
+          row(tData, 'Tax regime', r.primaCasa ? 'Main residence (prima casa)' : 'Second home (seconda casa)');
       });
-      row(tData, 'Tax regime', r.primaCasa ? 'Main residence (prima casa)' : 'Second home (seconda casa)');
 
       var imp = r.imposte, m = r.margine;
       row(tCalc, 'Total cadastral income (home + garage)', orNA(r.rendita));
@@ -383,3 +383,4 @@
   openFromDashboard();
   calc();
 })();
+

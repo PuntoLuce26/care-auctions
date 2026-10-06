@@ -50,6 +50,17 @@
         prof.textContent = '📞 Procedure professionals: ' + a.professionisti.map(function (s) { return (s.nome + ' ' + (s.cognome || '')).trim() + (s.telefono ? ' — ' + s.telefono : '') + (s.ruolo ? ' (' + s.ruolo + ')' : ''); }).join(' · ');
         li.appendChild(prof);
       }
+      if (a.lat && a.lon) {
+        var sv = document.createElement('p');
+        sv.className = 'small';
+        var linkSv = document.createElement('a');
+        linkSv.href = 'https://maps.google.com/maps?q=' + a.lat + ',' + a.lon + '&layer=c&cbll=' + a.lat + ',' + a.lon + '&cbp=11,0,0,0,0';
+        linkSv.target = '_blank';
+        linkSv.rel = 'noopener';
+        linkSv.textContent = '🛣️ Street View della zona →';
+        sv.appendChild(linkSv);
+        li.appendChild(sv);
+      }
       if (a.documenti && a.documenti.length) {
         var doc = document.createElement('p');
         doc.className = 'small';
