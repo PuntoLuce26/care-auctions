@@ -44,6 +44,12 @@
         ph.appendChild(ic); ph.appendChild(tx);
         li.appendChild(ph);
       }
+      if (a.professionisti && a.professionisti.length) {
+        var prof = document.createElement('p');
+        prof.className = 'small';
+        prof.textContent = '📞 Procedure professionals: ' + a.professionisti.map(function (s) { return (s.nome + ' ' + (s.cognome || '')).trim() + (s.telefono ? ' — ' + s.telefono : '') + (s.ruolo ? ' (' + s.ruolo + ')' : ''); }).join(' · ');
+        li.appendChild(prof);
+      }
       if (a.documenti && a.documenti.length) {
         var doc = document.createElement('p');
         doc.className = 'small';
