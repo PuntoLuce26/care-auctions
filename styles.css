@@ -354,6 +354,7 @@ h1 .tag, h2 .tag, legend .tag { margin-inline-start: 0.5rem; position: relative;
 /* ── 7. Struttura di pagina ────────────────────────────────────────── */
 main#main.container { padding-top: clamp(2rem, 1.2rem + 4vw, 4.5rem); padding-bottom: clamp(3rem, 2rem + 4vw, 5rem); }
 main#main.container > h1:first-child { margin-bottom: 0.4em; }
+main#main.container > .page-head { padding-top: 0.25rem; }
 .container.narrow > h2 { margin-top: 2.4rem; font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.65rem); }
 
 .page-head { padding: 0 0 1.75rem; margin-bottom: 2rem; border-bottom: 1px solid var(--line); position: relative; }
