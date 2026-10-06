@@ -253,7 +253,8 @@
     { k: 'ristrutturazione', etichetta: 'Ristrutturazione prevista', tipo: 'euro', zero: true },
     { k: 'difformita', etichetta: "Difformità (a carico dell'aggiudicatario)", tipo: 'euro', zero: true },
     { k: 'notaio', etichetta: 'Notaio', tipo: 'euro', zero: true },
-    { k: 'consulenza', etichetta: 'Consulenza', tipo: 'euro', zero: true }
+    { k: 'consulenza', etichetta: 'Consulenza', tipo: 'euro', zero: true },
+    { k: 'quota', etichetta: 'Quota di proprietà (% — solo 100: piena o nuda, mai frazioni)', tipo: 'numero', zero: true }
   ];
 
   function vuoto(x) {
@@ -274,6 +275,7 @@
     });
     if (d.ape === 'assente') mancanti.push('APE (indicato come assente)');
 
+    var quota = vuoto(d.quota) ? 100 : num(d.quota, 'quota');
     var prima = !!d.primaCasa;
     var aliquota = vuoto(d.aliquotaGestore) ? 0.04 : num(d.aliquotaGestore, 'aliquotaGestore');
     var aliqEff = aliquota * (1 + IVA_GESTORE);
@@ -327,6 +329,9 @@
     if (prezzoMax !== null && prezzoMax > 0 && rif !== null && rif > prezzoMax && nomeRif !== 'offerta minima') {
       segnala('AVVISO', 'il ' + nomeRif + ' (' + euro(rif) + ') supera il prezzo massimo (' + euro(prezzoMax) + ').');
     }
+    if (quota < 100) {
+      segnala('NON CONVIENE', 'quota di proprietà ' + quota + '%: SOLO 100% (piena o nuda proprietà), MAI le frazioni.');
+    }
     if (d.stato === 'da ristrutturare' && costi.ristrutturazione === 0) {
       segnala('AVVISO', 'immobile "da ristrutturare" ma ristrutturazione prevista pari a 0 €.');
     }
@@ -342,7 +347,8 @@
     }
 
     var esito;
-    if (prezzoMax === null || rif === null) esito = ESITO.NON_VALUTABILE;
+    if (quota < 100) esito = ESITO.NON_CONVIENE;
+    else if (prezzoMax === null || rif === null) esito = ESITO.NON_VALUTABILE;
     else if (prezzoMax <= 0 || minimaSopra) esito = ESITO.NON_CONVIENE;
     else if (rif > prezzoMax || (m && m.marginePercentuale < 5)) esito = ESITO.ATTENZIONE;
     else esito = ESITO.CONVIENE;
