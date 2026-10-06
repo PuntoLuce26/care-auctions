@@ -30,7 +30,8 @@
   };
   // Caso reale San Pasquale (dati verificati, gli stessi del prototipo). Tutti gli altri campi restano vuoti = MISSING.
   var SAN_PASQUALE = {
-    valoreMercato: 235000, prezzoOfferto: 126000, renditaCasa: 227.24, renditaBox: 78.09,
+    // caso reale: San Pasquale, Santa Teresa di Gallura — tribunale di PADOVA, proc. 49/2024 (archivio Giglia Dal Santo)
+    valoreMercato: 220000, prezzoOfferto: 126000, renditaCasa: 227.24, renditaBox: 78.09,
     ristrutturazione: 2000, difformita: 8000, notaio: 1500, consulenza: 5040
   };
 
