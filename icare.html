@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <meta name="theme-color" content="#F7F4EC">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CARe Auctions">
+  <title>iCARe chat (guided demo) · CARe Auctions</title>
+  <meta name="description" content="iCARe guides you through Italian property auctions in 11 languages. Self-service, human help when you need it.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <script src="cattura.js"></script>
+  <script src="icare-messages.js" defer></script>
+  <script src="icare.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="asta.html">Auction sheet</a></li>
+          <li><a href="galleria.html">Gallery</a></li>
+          <li><a href="icare.html" aria-current="page">iCARe</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="ipartner.html">iPartner</a></li>
+          <li><a href="idream.html">iDream</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="font-scale" id="font-scale" aria-label="Text size 100%. Activate for 115%.">Aa <span class="font-scale-level" id="font-scale-level">100%</span></button>
+      <span class="visually-hidden" id="font-scale-status" role="status"></span>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-head">
+      <h1>iCARe <span class="tag">Guided demo</span></h1>
+      <p class="lead">Your guide to Italian property auctions, in 11 languages.</p>
+    </div>
+
+    <section class="chat" id="chat" lang="en" dir="ltr" aria-labelledby="chat-title">
+      <div class="chat-head">
+        <span id="chat-title">iCARe <span class="tag" id="chat-tag">Guided demo</span></span>
+        <div class="segmented" role="group" id="lang-group" aria-label="Language">
+          <button type="button" data-lang="en" lang="en" aria-label="English (EN)">EN</button>
+          <button type="button" data-lang="it" lang="it" aria-label="Italiano (IT)">IT</button>
+          <button type="button" data-lang="de" lang="de" aria-label="Deutsch (DE)">DE</button>
+          <button type="button" data-lang="es" lang="es" aria-label="Español (ES)">ES</button>
+          <button type="button" data-lang="fr" lang="fr" aria-label="Français (FR)">FR</button>
+          <button type="button" data-lang="ru" lang="ru" aria-label="Русский (RU)">RU</button>
+          <button type="button" data-lang="ja" lang="ja" aria-label="日本語 (JA)">JA</button>
+          <button type="button" data-lang="ar" lang="ar" dir="rtl" aria-label="العربية (AR)">AR</button>
+          <button type="button" data-lang="hi" lang="hi" aria-label="हिन्दी (HI)">HI</button>
+          <button type="button" data-lang="ko" lang="ko" aria-label="한국어 (KO)">KO</button>
+          <button type="button" data-lang="zh" lang="zh-Hans" aria-label="简体中文 (ZH)">ZH</button>
+        </div>
+      </div>
+      <ul class="chat-log" id="chat-log" aria-label="Conversation" aria-live="polite"></ul>
+      <form class="chat-form" id="chat-form">
+        <label for="chat-input"><span id="chat-input-label">Your message</span>
+          <input type="text" id="chat-input" autocomplete="off" dir="auto" placeholder="Type here…" aria-describedby="chat-note">
+        </label>
+        <button type="button" class="mic-btn" id="chat-mic" aria-label="Speak to iCARe"><img src="assets/mic.svg" alt=""></button>
+        <button type="submit" class="btn btn-primary" id="chat-send" aria-label="Send">Send</button>
+      </form>
+      <p class="small chat-note" id="chat-note">Guided demo - the AI assistant arrives with the backend.</p>
+      <p class="small voice-note" id="voice-demo" lang="en" dir="ltr">Demo voice - the final human voice comes with the backend.</p>
+      <p class="small voice-note" id="voice-unsupported" lang="en" dir="ltr" hidden>Voice not supported in this browser</p>
+    </section>
+  <section class="container" aria-label="Become ours"><div id="lead-capture"></div></section>
+  <section class="container" aria-label="How the service works">
+      <h2>How the service works — for private buyers and investors worldwide</h2>
+      <ul class="cards">
+        <li class="card">
+          <h3>Vetrina — 0 €</h3>
+          <p>The public listings and the demo calculator. Everything already public, free forever.</p>
+        </li>
+        <li class="card">
+          <h3>Dossier iCARe — 290 €</h3>
+          <p>Your full file: valuation, strategy, accompaniment. Credited against the success fee if you win. Paid first = serious clients.</p>
+        </li>
+        <li class="card">
+          <h3>Success fee — 1,5%</h3>
+          <p>Only if you win. It also applies if a person connected to you (family, company) wins the lot. Zero if you don't win.</p>
+        </li>
+        <li class="card">
+          <h3>iCARe CLUB — 49 €/month</h3>
+          <p>For investors: unlimited intelligence — pre-auction radar, iCARe's picks, all valuations. Cancel anytime.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="logo-crop logo-footer"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions"></span>
+      <ul class="legal-links">
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <p>Invest in Italy. Zero Fees Until You Win.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <meta name="theme-color" content="#F7F4EC">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CARe Auctions">
+  <title>Auction sheet — maximum bid with 5% margin · CARe Auctions</title>
+  <meta name="description" content="Free auction calculator: maximum bid with a 5% margin, purchase taxes and full cost breakdown. Buyer-side advisory.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <script src="calcolo.js" defer></script>
+  <script src="analisi-store.js" defer></script>
+  <script src="asta.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="asta.html" aria-current="page">Auction sheet</a></li>
+          <li><a href="galleria.html">Gallery</a></li>
+          <li><a href="icare.html">iCARe</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="ipartner.html">iPartner</a></li>
+          <li><a href="idream.html">iDream</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="font-scale" id="font-scale" aria-label="Text size 100%. Activate for 115%.">Aa <span class="font-scale-level" id="font-scale-level">100%</span></button>
+      <span class="visually-hidden" id="font-scale-status" role="status"></span>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="print-only">
+      <span class="logo-crop logo-footer"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions"></span>
+    </div>
+
+    <div class="page-head no-print">
+      <h1>Auction sheet</h1>
+      <p class="lead">Find out the highest price you can bid and still keep a 5% margin, including taxes, auction fees and costs.</p>
+      <div class="next-step">
+        <p><strong>What to do now</strong></p>
+        <ol>
+          <li>Copy the figures from the court notice and the expert report (<em>perizia</em>) into the fields below. Leave a field empty if you don't have it.</li>
+          <li>Empty fields are flagged as <strong>MISSING</strong>: nothing is guessed for you.</li>
+          <li>Read the verdict and the summary, then print an A4 copy for your records.</li>
+        </ol>
+        <p>Want to see how it works first? Load the real San Pasquale example.</p>
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" id="a-example">Load real example (San Pasquale)</button>
+          <button type="button" class="btn btn-secondary" id="a-clear">Clear all fields</button>
+        </div>
+        <p class="small">Everything runs in your browser. Nothing leaves your device.</p>
+      </div>
+    </div>
+
+    <div class="save-msg next-step no-print" id="a-open-msg" role="status"></div>
+
+    <div class="mode-switch no-print" role="group" aria-labelledby="mode-label">
+      <p id="mode-label"><strong>How do you want to fill in the sheet?</strong> Guided asks one question at a time.</p>
+      <div class="segmented">
+        <button type="button" id="mode-guided" aria-pressed="false">Guided</button>
+        <button type="button" id="mode-full" aria-pressed="true">Full form</button>
+      </div>
+    </div>
+
+    <section class="wizard no-print" id="w-wizard" aria-labelledby="w-question" hidden>
+      <p class="wizard-count" id="w-count">Step 1 of 6</p>
+      <ol class="wizard-progress" id="w-progress" aria-label="Progress">
+        <li><span class="wp-name">The property</span></li>
+        <li><span class="wp-name">The auction</span></li>
+        <li><span class="wp-name">The costs</span></li>
+        <li><span class="wp-name">The market</span></li>
+        <li><span class="wp-name">The condition</span></li>
+        <li><span class="wp-name">Your result</span></li>
+      </ol>
+      <div class="save-msg notice" id="w-msg" role="alert"></div>
+      <form id="w-form" class="card wizard-card" novalidate>
+        <fieldset>
+          <legend id="w-legend">The property</legend>
+          <h2 class="wizard-question" id="w-question" tabindex="-1" aria-describedby="w-count"></h2>
+          <p class="small" id="w-help"></p>
+          <div class="wizard-fields" id="w-fields"></div>
+        </fieldset>
+        <div class="wizard-nav">
+          <button type="button" class="btn btn-secondary" id="w-back">Back</button>
+          <button type="submit" class="btn btn-primary" id="w-next">Next</button>
+          <button type="button" class="btn btn-secondary" id="w-full" hidden>Switch to full form</button>
+        </div>
+      </form>
+    </section>
+
+    <form id="a-form" class="no-print" novalidate>
+      <fieldset>
+        <legend>Auction details</legend>
+        <p class="small">Fields marked <strong>required to save</strong> are needed only to save the analysis to your dashboard.</p>
+        <div class="grid">
+          <label for="a-nome">Auction name<span class="hint">Your own label, e.g. street and town · required to save</span><input type="text" id="a-nome" autocomplete="off" aria-required="true"></label>
+          <label for="a-tribunale">Court (Tribunale)<span class="hint">Required to save</span><input type="text" id="a-tribunale" autocomplete="off" aria-required="true"></label>
+          <label for="a-procedura">Case number<span class="hint">Required to save</span><input type="text" id="a-procedura" autocomplete="off" aria-required="true"></label>
+          <label for="a-lotto">Lot<input type="text" id="a-lotto" autocomplete="off"></label>
+          <label for="a-data">Auction date<input type="date" id="a-data"></label>
+          <label for="a-termine">Bid deadline<input type="date" id="a-termine"></label>
+          <label for="a-base">Starting price — base d'asta (€)<input type="number" id="a-base" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-minima">Minimum bid — offerta minima (€)<input type="number" id="a-minima" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-deposito">Security deposit (€)<input type="number" id="a-deposito" min="0" step="1" inputmode="decimal"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Property details</legend>
+        <div class="grid">
+          <label for="a-tipo">Ownership type — what you are actually buying
+            <select id="a-tipo">
+              <option value="piena" selected>Full ownership (piena proprietà)</option>
+              <option value="nuda">Bare ownership (nuda proprietà)</option>
+            </select>
+            <span class="hint">CARe handles full and bare ownership. The sale notice states exactly what is sold: always check it.</span>
+          </label>
+          <label for="a-affitto">Expected monthly rent (€) <span class="hint">for the yield calculation — iCARe shows what the property can earn</span>
+            <input type="number" id="a-affitto" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-mq">Floor area (m²)<input type="number" id="a-mq" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-stato">Condition
+            <select id="a-stato">
+              <option value="">— not stated —</option>
+              <option value="ottimo">Excellent</option>
+              <option value="buono">Good</option>
+              <option value="da ristrutturare">Needs renovation</option>
+            </select>
+          </label>
+          <label for="a-rcasa">Cadastral income — home (€)<span class="hint">"Rendita catastale" in the land registry record</span><input type="number" id="a-rcasa" min="0" step="0.01" inputmode="decimal"></label>
+          <label for="a-rbox">Cadastral income — garage (€)<input type="number" id="a-rbox" min="0" step="0.01" inputmode="decimal"></label>
+          <label for="a-ape">Energy certificate (APE)
+            <select id="a-ape">
+              <option value="">— not stated —</option>
+              <option value="presente">Available</option>
+              <option value="assente">Not available</option>
+            </select>
+          </label>
+          <label for="a-ristr">Planned renovation (€)<input type="number" id="a-ristr" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-diff">Non-compliance — regularisation cost (€)<input type="number" id="a-diff" min="0" step="1" inputmode="decimal"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Valuation and costs</legend>
+        <div class="grid">
+          <label for="a-valore">Estimated market value (€)<input type="number" id="a-valore" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-offerto">Price you intend to bid (€)<input type="number" id="a-offerto" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-notaio">Notary (€)<input type="number" id="a-notaio" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-consul">Advisory fee (€)<input type="number" id="a-consul" min="0" step="1" inputmode="decimal"></label>
+          <label for="a-aliq">Auction platform fee (%) + 22% VAT<input type="number" id="a-aliq" min="0" step="0.1" value="4" inputmode="decimal"></label>
+        </div>
+        <label class="check" for="a-prima"><input type="checkbox" id="a-prima"> Main residence ("prima casa" tax rates)</label>
+      </fieldset>
+    </form>
+
+    <section class="card" id="a-result" aria-labelledby="sum-title">
+      <h2 id="sum-title">Auction sheet summary</h2>
+      <p class="small" id="a-header"></p>
+      <div aria-live="polite">
+        <div class="verdict v-na" id="a-verdict">—</div>
+        <ul id="a-summary"></ul>
+      </div>
+      <h3>Risk flags</h3>
+      <ul class="risks" id="a-risks"></ul>
+      <h3>Auction and property data</h3>
+      <div class="table-wrap"><table><tbody id="a-data-table"></tbody></table></div>
+      <h3>Calculations</h3>
+      <div class="table-wrap"><table><tbody id="a-calc-table"></tbody></table></div>
+      <p class="small" id="a-notes"></p>
+      <details class="no-print">
+        <summary>Step-by-step calculation (engine output, in Italian)</summary>
+        <h3>Purchase taxes</h3><ol class="steps" id="p-tax"></ol>
+        <h3>Auction platform fee</h3><ol class="steps" id="p-fee"></ol>
+        <h3>Maximum price — simple formula</h3><ol class="steps" id="p-sim"></ol>
+        <h3>Maximum price — detailed formula</h3><ol class="steps" id="p-det"></ol>
+        <h3>Margin</h3><ol class="steps" id="p-mar"></ol>
+      </details>
+      <p class="small"><strong>Not tax or legal advice.</strong> Tax rates and rules are assumptions of this tool: always check with a notary and an accountant before you bid.</p>
+      <div class="actions no-print">
+        <button type="button" class="btn btn-primary" id="a-save">Save analysis</button>
+        <button type="button" class="btn btn-secondary" id="a-print">Print A4 summary</button>
+      </div>
+      <div class="save-msg notice no-print" id="a-save-warn" role="alert"></div>
+      <div class="save-msg next-step no-print" id="a-save-ok" role="status"></div>
+    </section>
+      <section class="ask-everywhere" aria-label="Ask iCARe">
+      <form class="home-ask" action="icare.html" method="get">
+        <label class="visually-hidden" for="q2">Ask iCARe</label>
+        <input type="text" id="q2" name="q" placeholder="One question. A world of auctions." autocomplete="off">
+        <button type="submit" class="btn btn-primary">Ask</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="logo-crop logo-footer"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions"></span>
+      <ul class="legal-links">
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <p>Invest in Italy. Zero Fees Until You Win.</p>
+    </div>
+  </footer>
+</body>
+</html>

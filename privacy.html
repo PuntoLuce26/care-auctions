@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <meta name="theme-color" content="#F7F4EC">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CARe Auctions">
+  <title>Permissions &amp; privacy — CARe Auctions</title>
+  <meta name="description" content="How iCARe works for you: consent per purpose, minimum data, revoke any time.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <script src="privacy.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="asta.html">Auction sheet</a></li>
+          <li><a href="galleria.html">Gallery</a></li>
+          <li><a href="icare.html">iCARe</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="ipartner.html">iPartner</a></li>
+          <li><a href="idream.html">iDream</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="font-scale" id="font-scale" aria-label="Text size 100%. Activate for 115%.">Aa <span class="font-scale-level" id="font-scale-level">100%</span></button>
+      <span class="visually-hidden" id="font-scale-status" role="status"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <h1>Permissions &amp; privacy</h1>
+        <p class="lead">iCARe acts only on what you authorize — revoke anything, anytime.</p>
+        <div class="notice">
+          <p><span class="tag">Demo</span> <strong>Demo - the real consent system arrives with the backend.</strong></p>
+          <p class="small">On this page your choices are saved only in this browser. They do not yet switch iCARe features on or off.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="rules-title">
+      <div class="container">
+        <h2 id="rules-title">The 6 rules iCARe follows</h2>
+        <ol class="cards">
+          <li class="card">
+            <span class="num">1</span>
+            <h3>Consent for each purpose</h3>
+            <p>iCARe acts only after you say yes to one specific purpose. One consent, one purpose, one document.</p>
+          </li>
+          <li class="card">
+            <span class="num">2</span>
+            <h3>Only what is needed</h3>
+            <p>One consent, one purpose, one document. Never "general" access.</p>
+          </li>
+          <li class="card">
+            <span class="num">3</span>
+            <h3>Everything is visible</h3>
+            <p>Every action is logged: what, when, why.</p>
+          </li>
+          <li class="card">
+            <span class="num">4</span>
+            <h3>Revoke at any time</h3>
+            <p>Every consent can be withdrawn with one tap, even after you gave it.</p>
+          </li>
+          <li class="card">
+            <span class="num">5</span>
+            <h3>You sign external actions</h3>
+            <p>iCARe prepares, you authorize and sign. Submitting a bid needs your digital identity or power of attorney: that is the law, and it protects you.</p>
+          </li>
+          <li class="card">
+            <span class="num">6</span>
+            <h3>Confidentiality (GDPR)</h3>
+            <p>Your personal data is used only for the purpose you authorized. Never sold, never used for marketing you did not ask for.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="public-title">
+      <div class="container">
+        <h2 id="public-title">What needs your consent, and what does not</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Auction data: public</h3>
+            <p>Auction listings and court documents come from the Italian public sales portal. They are public, so iCARe can use them without asking for consent.</p>
+          </div>
+          <div class="card">
+            <h3>Your data and your actions: consent needed</h3>
+            <p>Consent is needed for your personal data and for any action taken on your behalf, such as bids and payments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="consent-title">
+      <div class="container">
+        <h2 id="consent-title">Your permissions <span class="tag">Demo</span></h2>
+        <div class="next-step">
+          <p><strong>What to do now:</strong> tick only the permissions you want to give. Each one has a single purpose. Untick it to revoke.</p>
+        </div>
+        <form id="consent-form" class="form-narrow" novalidate>
+          <fieldset>
+            <legend>Permissions for iCARe</legend>
+            <p>
+              <label class="check" for="c-sale-notice"><input type="checkbox" id="c-sale-notice" data-key="saleNotice" aria-describedby="c-sale-notice-hint"> Read the sale notice to calculate costs</label>
+              <span class="hint" id="c-sale-notice-hint">Purpose: calculate the total cost of an auction (taxes, fees, deposit) from the sale notice you choose.</span>
+            </p>
+            <p>
+              <label class="check" for="c-appraisal"><input type="checkbox" id="c-appraisal" data-key="appraisal" aria-describedby="c-appraisal-hint"> Read the appraisal report for the analysis</label>
+              <span class="hint" id="c-appraisal-hint">Purpose: find market value, constraints, strengths and risks of the property you are analyzing.</span>
+            </p>
+            <p>
+              <label class="check" for="c-save-device"><input type="checkbox" id="c-save-device" data-key="saveDevice" aria-describedby="c-save-device-hint"> Save your analyses on this device</label>
+              <span class="hint" id="c-save-device-hint">Purpose: keep your analyses in this browser so you can reopen them from the dashboard. Nothing leaves your device.</span>
+            </p>
+            <p>
+              <label class="check" for="c-voice"><input type="checkbox" id="c-voice" data-key="voice" aria-describedby="c-voice-hint"> Use speech synthesis</label>
+              <span class="hint" id="c-voice-hint">Purpose: read iCARe's messages aloud with your browser's voice.</span>
+            </p>
+            <p>
+              <label class="check" for="c-email"><input type="checkbox" id="c-email" data-key="email" aria-describedby="c-email-hint"> Contact you by email <span class="tag">Phase 2</span></label>
+              <span class="hint" id="c-email-hint">Purpose: send you updates about the auctions and bids you follow. Not active yet: no email is sent.</span>
+            </p>
+          </fieldset>
+          <div class="actions">
+            <button type="button" class="btn btn-secondary" id="revoke-all">Revoke all</button>
+          </div>
+          <p class="message save-msg" id="consent-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="log-title">
+      <div class="container">
+        <h2 id="log-title">Access log <span class="tag">Demo</span></h2>
+        <p>Every time iCARe reads something for you, it will appear here. The entries below are fixed demo examples, not real activity.</p>
+        <ul class="analysis-list">
+          <li class="card"><span class="tag">Demo</span> iCARe read: sale notice - purpose: cost calculation - 5 Oct 14:50</li>
+          <li class="card"><span class="tag">Demo</span> iCARe read: appraisal report - purpose: property analysis - 5 Oct 14:52</li>
+          <li class="card"><span class="tag">Demo</span> iCARe saved: analysis on this device - purpose: reopen from dashboard - 5 Oct 14:55</li>
+        </ul>
+        <p class="small">Demo - the real consent system arrives with the backend.</p>
+      </div>
+    </section>
+      <section class="ask-everywhere" aria-label="Ask iCARe">
+      <form class="home-ask" action="icare.html" method="get">
+        <label class="visually-hidden" for="q2">Ask iCARe</label>
+        <input type="text" id="q2" name="q" placeholder="One question. A world of auctions." autocomplete="off">
+        <button type="submit" class="btn btn-primary">Ask</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="logo-crop logo-footer"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions"></span>
+      <ul class="legal-links">
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <p>Invest in Italy. Zero Fees Until You Win.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "comune": "cagliari",
+  "fonte": "idealista (via servizio dati — fallback dichiarato 5.39)",
+  "aggiornato": "2026-10-06",
+  "comparabili": [
+    {
+      "prezzo": 155000,
+      "mq": 57,
+      "euroMq": 2719,
+      "link": "https://www.idealista.com/inmueble/112674923/"
+    },
+    {
+      "prezzo": 410000,
+      "mq": 104,
+      "euroMq": 3942,
+      "link": "https://www.idealista.com/inmueble/112749886/"
+    },
+    {
+      "prezzo": 395000,
+      "mq": 123,
+      "euroMq": 3211,
+      "link": "https://www.idealista.com/inmueble/112749644/"
+    },
+    {
+      "prezzo": 230313,
+      "mq": 107,
+      "euroMq": 2152,
+      "link": "https://www.idealista.com/inmueble/112749140/"
+    },
+    {
+      "prezzo": 217000,
+      "mq": 165,
+      "euroMq": 1315,
+      "link": "https://www.idealista.com/inmueble/94831886/"
+    },
+    {
+      "prezzo": 400000,
+      "mq": 127,
+      "euroMq": 3150,
+      "link": "https://www.idealista.com/inmueble/112719871/"
+    }
+  ],
+  "euroMqMedio": 2748
+}

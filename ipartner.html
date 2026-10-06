@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <meta name="theme-color" content="#F7F4EC">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CARe Auctions">
+  <title>iPartner — CARe Auctions</title>
+  <meta name="description" content="iPartner network: lawyers, notaries, builders and disability partners working with CARe Auctions.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <script src="ipartner.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="asta.html">Auction sheet</a></li>
+          <li><a href="galleria.html">Gallery</a></li>
+          <li><a href="icare.html">iCARe</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="ipartner.html" aria-current="page">iPartner</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="font-scale" id="font-scale" aria-label="Text size 100%. Activate for 115%.">Aa <span class="font-scale-level" id="font-scale-level">100%</span></button>
+      <span class="visually-hidden" id="font-scale-status" role="status"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>iPartner</h1>
+        <p class="tagline">The professionals behind every property, in one network.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="levels-title">
+      <div class="container">
+        <h2 id="levels-title">The 4 iPartner levels</h2>
+        <div class="next-step">
+          <p><strong>What to do now:</strong> find your level below, then fill in the <a href="#apply-title">application form</a>.</p>
+          <p class="small">For professionals who serve private investors. Prices are proposed and may change before launch.</p>
+        </div>
+
+        <ul class="cards tiers">
+          <li class="card">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V4h6v3M3 12h18"/></svg>
+            <h3>Professional</h3>
+            <p>Lawyers, notaries, accountants, surveyors (geometri).</p>
+            <p class="price">€240 <span class="small">/ year</span></p>
+          </li>
+          <li class="card">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l4 4-9 9H5v-4z"/><path d="M12 8l4 4"/></svg>
+            <h3>Service</h3>
+            <p>Building companies, home staging, photographers, translators.</p>
+            <p class="price">€120 <span class="small">/ year</span></p>
+          </li>
+          <li class="card card-pref">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 7v6h5l2 5M12 10h4"/><path d="M9 11.5a5 5 0 1 0 6 6.5"/></svg>
+            <p><span class="badge-pref">Preferential path</span></p>
+            <h3>Disability preferential path</h3>
+            <p>Non-profit disability associations and professionals in the field.</p>
+            <p class="price">€0 <span class="small">for non-profit associations</span></p>
+            <p class="price">−50% <span class="small">for professionals in the field</span></p>
+            <p class="small">Disability first. This path is free or discounted.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="apply-title">
+      <div class="container">
+        <h2 id="apply-title">Apply to iPartner</h2>
+        <div class="notice">
+          <p><span class="tag">Demo</span> This form sends nothing and saves nothing. The real submission arrives with the backend.</p>
+        </div>
+        <form class="form-narrow" id="apply-form">
+          <p><label for="ap-name">Name</label>
+            <input id="ap-name" name="name" type="text" autocomplete="name"></p>
+          <p><label for="ap-level">Category</label>
+            <select id="ap-level" name="level">
+              <option value="professional">Professional — €240/year</option>
+              <option value="service">Service — €120/year</option>
+              <option value="disability">Disability preferential path — €0 non-profit / −50% professionals</option>
+            </select></p>
+          <p><label for="ap-email">Email</label>
+            <input id="ap-email" name="email" type="email" autocomplete="email"></p>
+          <p><label for="ap-msg">Message</label>
+            <textarea id="ap-msg" name="message" rows="4"></textarea></p>
+          <p><button type="submit" class="btn btn-primary">Send application</button></p>
+          <p class="message save-msg" id="apply-msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">FAQ</h2>
+        <h3>How much does it cost?</h3>
+        <p>Professional €240/yr · Service €120/yr · Disability path €0 / −50%. Proposed prices.</p>
+                <h3>Why is the disability path free?</h3>
+        <p>Because it is PuntoLuce's positioning: priority to people with disabilities. Non-profit associations join for free; professionals in the field get 50% off.</p>
+      </div>
+    </section>
+      <section class="ask-everywhere" aria-label="Ask iCARe">
+      <form class="home-ask" action="icare.html" method="get">
+        <label class="visually-hidden" for="q2">Ask iCARe</label>
+        <input type="text" id="q2" name="q" placeholder="One question. A world of auctions." autocomplete="off">
+        <button type="submit" class="btn btn-primary">Ask</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="logo-crop logo-footer"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions"></span>
+      <ul class="legal-links">
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <p>Invest in Italy. Zero Fees Until You Win.</p>
+    </div>
+  </footer>
+</body>
+</html>
