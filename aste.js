@@ -40,7 +40,7 @@
         ph.className = 'aste-foto-placeholder';
         ph.innerHTML = ''; // nessuna immagine inline (CSP)
         var ic = document.createElement('span'); ic.className = 'aste-foto-ico'; ic.textContent = '🏠';
-        var tx = document.createElement('span'); tx.textContent = 'Photo in the official appraisal — iCARe sends it to you on request.';
+        var tx = document.createElement('span'); tx.className = 'aste-foto-note'; tx.textContent = 'Photos are in the official appraisal file — iCARe sends them to you on request.';
         ph.appendChild(ic); ph.appendChild(tx);
         li.appendChild(ph);
       }

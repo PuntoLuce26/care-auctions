@@ -990,7 +990,9 @@ body.home .site-footer { margin-top: 0; border-top-color: transparent; backgroun
 
 .aste-img { max-width: 100%; height: auto; border-radius: 2px; margin-top: .5rem; }
 
-.aste-foto-placeholder { display: flex; align-items: center; gap: .9rem; padding: 1.1rem 1.25rem; border: 1px solid var(--line, #ddd); border-radius: 4px; background: linear-gradient(120deg, rgba(201,168,106,.14), rgba(201,168,106,.05)); color: var(--muted, #555); font-size: .9rem; margin: .5rem 0; }
+.aste-foto-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .45rem; padding: 2.2rem 1.25rem; border: 1px solid var(--line, #ddd); border-radius: 8px; background: linear-gradient(135deg, #0F1E3A 0%, #16294D 60%, #1D3560 100%); color: #FDF6E3; text-align: center; font-size: .9rem; margin: .5rem 0; min-height: 9rem; }
+.aste-foto-placeholder .aste-foto-ico { font-size: 2.4rem; opacity: .95; }
+.aste-foto-placeholder .aste-foto-note { max-width: 34ch; opacity: .92; line-height: 1.45; }
 .aste-foto-ico { font-size: 1.7rem; line-height: 1; }
 
 .card-passo { padding: .6rem 1rem; font-size: .9rem; color: var(--ink, #1A1A18); border-left: 2px solid var(--gold, #8A6A1F); background: rgba(201,168,106,.07); }
