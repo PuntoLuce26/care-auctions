@@ -44,6 +44,12 @@
         ph.appendChild(ic); ph.appendChild(tx);
         li.appendChild(ph);
       }
+      if (!aste.length) {
+        var vuoto = document.createElement('p');
+        vuoto.className = 'small';
+        vuoto.textContent = 'No verified opportunities in this region right now — every auction must pass the full screening before being published. Try another region.';
+        listEl.appendChild(vuoto);
+      }
       if (a.professionisti && a.professionisti.length) {
         var prof = document.createElement('p');
         prof.className = 'small';
@@ -124,7 +130,7 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('data-r', reg);
-      b.setAttribute('aria-pressed', reg === 'sardegna' ? 'true' : 'false');
+      b.setAttribute('aria-pressed', reg === 'lazio' ? 'true' : 'false');
       b.textContent = reg.charAt(0).toUpperCase() + reg.slice(1).replace(/-/g, ' ');
       g.appendChild(b);
     });
@@ -146,7 +152,7 @@
     });
   }
 
-  caricaRegione('sardegna').then(render).catch(function () { /* righe statiche di riserva */ });
+  caricaRegione('lazio').then(render).catch(function () { /* righe statiche di riserva */ });
 
   var form = document.getElementById('filter-form');
   if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
