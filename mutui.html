@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <title>Mutui e finanziamenti per la tua casa all'asta · CARe Auctions</title>
+  <meta name="description" content="Compra all'asta con iCARe e richiedi il mutuo o il finanziamento giusto: i nostri partner creditizi (mediatori OAM) ti accompagnano, con condizioni verificate. Richiesta gratuita.">
+  <link rel="canonical" href="https://careauctions.co/mutui.html">
+  <link rel="stylesheet" href="styles10.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Mutui e finanziamenti per aste giudiziarie","serviceType":"Mortgage and financing referral","provider":{"@type":"Organization","name":"PuntoLuce Srls"},"description":"Richiesta mutuo o finanziamento per l'acquisto all'asta: i nostri partner creditizi OAM accompagnano l'utente. Gratuito."}</script>
+</head>
+<body class="page-mutui">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="buy-now.html">Buy Now</a></li>
+          <li><a href="prova.html">Calculator</a></li>
+          <li><a href="icare.html">iCARe</a></li>
+          <li><a href="mutui.html" class="attivo" aria-current="page">Mutui</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-head">
+      <h1>Mutui e finanziamenti.</h1>
+      <p class="lead">La casa all'asta, con il mutuo giusto. I nostri partner creditizi ti accompagnano — gratuito.</p>
+    </div>
+
+    <h2>Come funziona.</h2>
+    <ol>
+      <li>Calcoli qui sotto la rata indicativa</li>
+      <li>Invii la richiesta gratuita (nessun impegno)</li>
+      <li>Un mediatore creditizio autorizzato (OAM) ti ricontatta e prepara la pratica</li>
+      <li>Vinci l'asta → il mutuo si attiva. Non vinci → non paghi nulla</li>
+    </ol>
+
+    <h2>Calcola la rata.</h2>
+    <form id="calc-mutuo" aria-label="Calcolo rata">
+      <p>
+        <label for="m-importo">Importo richiesto (€)</label>
+        <input type="number" id="m-importo" value="150000" min="10000" step="5000">
+      </p>
+      <p>
+        <label for="m-anni">Durata (anni)</label>
+        <input type="number" id="m-anni" value="25" min="5" max="35">
+      </p>
+      <p>
+        <label for="m-tasso">Tasso indicativo (%)</label>
+        <input type="number" id="m-tasso" value="3.5" min="0.5" max="10" step="0.1">
+      </p>
+      <p class="small" id="m-esito">Rata indicativa: —</p>
+    </form>
+
+    <h2>Richiedi gratis.</h2>
+    <form id="form-mutuo" aria-label="Richiesta mutuo">
+      <p>
+        <label for="r-nome">Nome</label>
+        <input type="text" id="r-nome" required>
+      </p>
+      <p>
+        <label for="r-email">Email</label>
+        <input type="email" id="r-email" required>
+      </p>
+      <p>
+        <label for="r-importo">Importo (€)</label>
+        <input type="number" id="r-importo" value="150000" min="10000">
+      </p>
+      <p>
+        <label for="r-note">La tua situazione (facoltativo)</label>
+        <textarea id="r-note" rows="3"></textarea>
+      </p>
+      <p><button type="submit" class="btn btn-primary">Invia richiesta gratuita</button></p>
+      <p class="small">La richiesta viene inoltrata ai nostri partner creditizi autorizzati (OAM). Nessun impegno, nessun costo per la richiesta.</p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>CARe Auctions by <strong>PuntoLuce Srls</strong> — Via Calamattia 21, 09134 Cagliari (CA) · P.IVA 04240850927 · <a href="mailto:info@puntoluce26.com">info@puntoluce26.com</a> · <a href="https://wa.me/iCARe26">WhatsApp @iCARe26</a></p>
+      <p><a href="privacy.html">Privacy policy</a> · <a href="cookie.html">Cookie policy</a> · <a href="terms.html">Terms</a> · <a href="about.html">About</a> · <a href="manifesto.html">Manifesto</a></p>
+    </div>
+  </footer>
+  <script src="mutui.js"></script>
+  <script src="cookies.js"></script>
+</body>
+</html>
