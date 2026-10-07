@@ -9,7 +9,7 @@
   // RICONOSCE LA LINGUA DAL DISPOSITIVO/NAVIGATORE (posizione e impostazioni) (5.129)
   function linguaDaNavigatore() {
     var n = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    var nostre = ['it','en','de','es','fr','ru','ja','ar','hi','ko','zh','pt','pl','uk','vi','ro'];
+    var nostre = ['it','en','de','es','fr','ru','ja','ar','hi','ko','zh','pt','pl','uk','vi','ro','tl','el','nl','sv'];
     for (var i = 0; i < nostre.length; i++) { if (n.indexOf(nostre[i]) === 0) return nostre[i]; }
     return 'en';
   }
@@ -32,7 +32,7 @@
     }
   });
   // Barra lingua sulle pagine core (per cambiare in ogni momento)
-  var LINGUE = [['it','IT'],['en','EN'],['de','DE'],['es','ES'],['fr','FR'],['ru','RU'],['ja','JA'],['ar','AR'],['hi','HI'],['ko','KO'],['zh','ZH'],['pt','PT'],['pl','PL'],['uk','UK'],['vi','VI'],['ro','RO']];
+  var LINGUE = [['it','IT'],['en','EN'],['de','DE'],['es','ES'],['fr','FR'],['ru','RU'],['ja','JA'],['ar','AR'],['hi','HI'],['ko','KO'],['zh','ZH'],['pt','PT'],['pl','PL'],['uk','UK'],['vi','VI'],['ro','RO'],['tl','TL'],['el','EL'],['nl','NL'],['sv','SV']];
   var bar = document.getElementById('barra-lingua');
   if (bar && !bar.children.length) {
     LINGUE.forEach(function (p) {
