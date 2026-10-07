@@ -1031,3 +1031,6 @@ main#main.container > .home-welcome {
   .home-ask input { min-width: 0 !important; flex: 1 1 auto; }
   .home-ask { gap: .3rem; padding-inline-start: .9rem; }
 }
+
+/* ── FIX RADICE (Sam 5.0, 7/10): body.home > main era flex-row e schiacciava la hero ── */
+body.home > main { display: block; }
