@@ -29,10 +29,10 @@
     'NON VALUTABILE': { cls: 'v-na', text: 'CANNOT BE ASSESSED — data missing' }
   };
   // Caso reale San Pasquale (dati verificati, gli stessi del prototipo). Tutti gli altri campi restano vuoti = MISSING.
-  var SAN_PASQUALE = {
-    // caso reale: San Pasquale, Santa Teresa di Gallura — tribunale di PADOVA, proc. 49/2024 (archivio Giglia Dal Santo)
-    valoreMercato: 220000, prezzoOfferto: 126000, renditaCasa: 227.24, renditaBox: 78.09,
-    ristrutturazione: 2000, difformita: 8000, notaio: 1500, consulenza: 5040
+  var ESEMPIO = {
+    // ESEMPIO DIMOSTRATIVO (5.138): numeri generici, mai i prezzi di acquisto reali
+    valoreMercato: 200000, prezzoOfferto: 100000, renditaCasa: 200, renditaBox: 70,
+    ristrutturazione: 3000, difformita: 5000, notaio: 1500, consulenza: 3000
   };
 
   var E = C.euro;
@@ -358,7 +358,7 @@
   $('a-form').addEventListener('submit', function (e) { e.preventDefault(); });
   $('a-example').addEventListener('click', function () {
     Object.keys(FIELDS).forEach(function (k) {
-      $(FIELDS[k]).value = SAN_PASQUALE.hasOwnProperty(k) ? SAN_PASQUALE[k] : '';
+      $(FIELDS[k]).value = ESEMPIO.hasOwnProperty(k) ? ESEMPIO[k] : '';
     });
     $('a-nome').value = '';
     $('a-prima').checked = false; // seconda casa
