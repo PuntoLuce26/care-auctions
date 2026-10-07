@@ -1049,8 +1049,8 @@ h2 { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem); }
 .home-ask input { font-size: 0.92rem; }
 
 /* ── ELEGANZA FINALE (5.109): logo contenuto, info societarie fini ── */
-.logo-nav { width: clamp(150px, 20vw, 240px) !important; }
-body.home .logo-nav { width: clamp(150px, 20vw, 240px) !important; }
+.logo-nav { width: clamp(130px, 11vw, 165px) !important; }
+body.home .logo-nav { width: clamp(130px, 11vw, 165px) !important; }
 .logo-nav img { opacity: .96; }
 .site-footer { font-size: 0.72rem; letter-spacing: 0.02em; color: #6B6557; }
 .site-footer .container p { line-height: 1.5; }
