@@ -6,7 +6,21 @@
   function leggi() { try { return localStorage.getItem(K); } catch (e) { return null; } }
   function salva(l) { try { localStorage.setItem(K, l); } catch (e) {} }
   // Espone la lingua scelta a tutto il sito
-  window.ICAReLingua = leggi() || 'en';
+  // RICONOSCE LA LINGUA DAL DISPOSITIVO/NAVIGATORE (posizione e impostazioni) (5.129)
+  function linguaDaNavigatore() {
+    var n = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var nostre = ['it','en','de','es','fr','ru','ja','ar','hi','ko','zh'];
+    for (var i = 0; i < nostre.length; i++) { if (n.indexOf(nostre[i]) === 0) return nostre[i]; }
+    return 'en';
+  }
+  var scelta = leggi();
+  if (!scelta) {
+    scelta = linguaDaNavigatore();
+    salva(scelta);
+    // sulla home radice: va subito alla homepage localizzata
+    if (location.pathname === '/' && scelta !== 'en') { window.location.replace(scelta + '/index.html'); }
+  }
+  window.ICAReLingua = scelta;
   // Selettori lingua: cliccando si salva e si va alla homepage localizzata
   document.addEventListener('click', function (ev) {
     var t = ev.target.closest ? ev.target.closest('[data-lingua]') : null;
