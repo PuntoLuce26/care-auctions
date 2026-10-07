@@ -1034,3 +1034,16 @@ main#main.container > .home-welcome {
 
 /* ── FIX RADICE (Sam 5.0, 7/10): body.home > main era flex-row e schiacciava la hero ── */
 body.home > main { display: block; }
+
+/* ── RIFINITURA APPLE (5.109): scala tipografica elegante, caratteri giusti ── */
+body { font-size: 0.95rem; line-height: 1.55; }
+.nav-list a { font-size: 0.85rem; letter-spacing: 0.02em; }
+.home-title { font-size: clamp(1.35rem, 1rem + 1.4vw, 1.85rem) !important; letter-spacing: -0.015em; }
+.home-tagline { font-size: 0.95rem; }
+.home-trust, .home-match { font-size: 0.85rem; }
+.page-head h1 { font-size: clamp(1.3rem, 1.05rem + 1vw, 1.7rem); }
+.lead { font-size: 1rem; }
+h2 { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem); }
+.btn, .btn-primary, .btn-secondary { font-size: 0.9rem; }
+.site-footer { font-size: 0.8rem; }
+.home-ask input { font-size: 0.92rem; }
