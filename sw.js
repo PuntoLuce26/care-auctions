@@ -1,6 +1,6 @@
 /* CARe Auctions — service worker: offline completo, cache-first, solo same-origin.
    Nessuna richiesta esterna viene mai toccata. Versione cache: v1 */
-const CACHE = 'care-auctions-v26';
+const CACHE = 'care-auctions-v16';
 const CORE = [
   './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
   './assets/logo-careauctions-pulito.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png',
@@ -44,16 +44,16 @@ self.addEventListener('fetch', (e) => {
     return fetch(e.request);
   }
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
+  // NETWORK-FIRST: il sito serve sempre la versione piu recente; la cache resta solo per l offline.
   e.respondWith(
-    caches.match(e.request).then((hit) =>
-      hit ||
-      fetch(e.request)
-        .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, copy));
-          return res;
-        })
-        .catch(() => caches.match('./index.html'))
-    )
+    fetch(e.request)
+      .then(function (res) {
+        if (res && res.ok && e.request.method === 'GET') {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+        }
+        return res;
+      })
+      .catch(function () { return caches.match(e.request).then(function (hit) { return hit || caches.match('./index.html'); }); })
   );
 });
