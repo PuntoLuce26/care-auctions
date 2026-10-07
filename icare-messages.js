@@ -67,7 +67,7 @@ window.ICARE_MESSAGES = {
         label: "Talk to a human",
         paragraphs: [
           "CARe Auctions is self-service. You can do everything yourself, with iCARe guiding you.",
-          "Gianluca steps in only when it's truly needed.",
+          "The human consultant steps in only when it is truly needed.",
           "Direct contact goes live with the backend. No email or phone contact is active in this demo."
         ],
         steps: [],
@@ -172,7 +172,7 @@ window.ICARE_MESSAGES = {
         label: "Parla con una persona",
         paragraphs: [
           "CARe Auctions è self-service: fai tutto in autonomia, con iCARe al tuo fianco.",
-          "Gianluca interviene solo quando serve davvero.",
+          "Il consulente umano interviene solo quando serve davvero.",
           "Il contatto diretto arriva quando il backend sarà attivo. In questa demo non c'è nessun contatto email o telefonico attivo."
         ],
         steps: [],
@@ -277,7 +277,7 @@ window.ICARE_MESSAGES = {
         label: "Mit einem Menschen sprechen",
         paragraphs: [
           "CARe Auctions ist Self-Service: Du erledigst alles selbst, geführt von iCARe.",
-          "Gianluca greift nur ein, wenn es wirklich nötig ist.",
+          "Der menschliche Berater greift nur ein, wenn es wirklich nötig ist.",
           "Direkter Kontakt kommt, sobald das Backend live ist. In dieser Demo ist kein Kontakt per E-Mail oder Telefon aktiv."
         ],
         steps: [],
@@ -382,7 +382,7 @@ window.ICARE_MESSAGES = {
         label: "Hablar con una persona",
         paragraphs: [
           "CARe Auctions es autoservicio: lo haces todo por tu cuenta, con iCARe guiándote.",
-          "Gianluca interviene solo cuando de verdad hace falta.",
+          "El consultor humano interviene solo cuando de verdad hace falta.",
           "El contacto directo llegará cuando el backend esté activo. En esta demo no hay ningún contacto por email ni por teléfono activo."
         ],
         steps: [],
@@ -487,7 +487,7 @@ window.ICARE_MESSAGES = {
         label: "Parler à un humain",
         paragraphs: [
           "CARe Auctions fonctionne en libre-service : tu fais tout toi-même, avec l'aide d'iCARe.",
-          "Gianluca n'intervient que quand c'est vraiment nécessaire.",
+          "Le conseiller humain n'intervient que quand c'est vraiment nécessaire.",
           "Le contact direct sera disponible dès que le backend sera en ligne. Aucun contact par e-mail ou téléphone n'est actif dans cette démo."
         ],
         steps: [],

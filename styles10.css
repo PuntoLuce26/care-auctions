@@ -1,5 +1,5 @@
 /* CARe Auctions — app iCARe.
-   "AVORIO EDITORIALE" · edizione 2 — direzione approvata da Gianluca il 5 ottobre 2026,
+   "AVORIO EDITORIALE" · edizione 2 — direzione della proprietà, 5 ottobre 2026,
    riscritta a livello top di gamma: carta avorio, inchiostro, oro raffinato, UN SOLO font sans di sistema ovunque (direttiva 5.15).
 
    Contrasti (WCAG 2.2, calcolati):
@@ -1007,7 +1007,7 @@ body.home .site-footer { margin-top: 0; border-top-color: transparent; backgroun
 .home-title { font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.2rem); font-weight: 600; letter-spacing: -0.01em; margin: 0 0 .5rem; color: var(--ink, #1A1A18); }
 .home-tagline { font-size: 1.05rem; color: var(--muted, #555); margin: 0 0 1.5rem; }
 
-/* ── GARANZIA HOME (Sam 5.0) ── centratura assoluta, sovrascrive ogni regola */
+/* ── GARANZIA HOME ── centratura assoluta, sovrascrive ogni regola */
 main#main.container > .home-welcome {
   display: flex !important;
   flex-direction: column !important;
@@ -1032,7 +1032,7 @@ main#main.container > .home-welcome {
   .home-ask { gap: .3rem; padding-inline-start: .9rem; }
 }
 
-/* ── FIX RADICE (Sam 5.0, 7/10): body.home > main era flex-row e schiacciava la hero ── */
+/* ── FIX RADICE (7/10): body.home > main era flex-row e schiacciava la hero ── */
 body.home > main { display: block; }
 
 /* ── RIFINITURA APPLE (5.109): scala tipografica elegante, caratteri giusti ── */

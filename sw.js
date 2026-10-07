@@ -1,6 +1,6 @@
 /* CARe Auctions — service worker: offline completo, cache-first, solo same-origin.
    Nessuna richiesta esterna viene mai toccata. Versione cache: v1 */
-const CACHE = 'care-auctions-v50';
+const CACHE = 'care-auctions-v51';
 const CORE = [
   './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
   './assets/logo-careauctions-pulito.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png',
@@ -38,7 +38,7 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
-  // ANTEPRIMA LOCALE: mai servire la cache (Sam 5.0 — il Mac deve vedere sempre l'ultima build)
+  // ANTEPRIMA LOCALE: mai servire la cache (il Mac deve vedere sempre l'ultima build)
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' ||
       location.hostname.startsWith('192.168') || location.hostname.startsWith('172.') || location.hostname.startsWith('10.')) {
     return fetch(e.request);

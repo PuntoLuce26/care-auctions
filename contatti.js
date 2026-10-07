@@ -1,9 +1,9 @@
 /* contatti.js — UNICO punto dei contatti di CARe Auctions (direttiva 5.9:
-   quando Gianluca dà i contatti, si modifica SOLO questo file e tutta l'app
+   quando la proprietà definisce i contatti, si modifica SOLO questo file e tutta l'app
    si aggiorna). Oggi vuoto: i pulsanti restano segnaposto onesti. */
 (function () {
   window.CONTATTI = {
-    email: 'info@puntoluce26.com',        // canale PUBBLICO professionale (Google Workspace) — mai email o telefoni personali di Gianluca
+    email: 'info@puntoluce26.com', // canale PUBBLICO professionale — mai email o telefoni personali
     telefono: '',     // formato +39 ...
     whatsapp: '',     // link wa.me
     calendly: '',     // link alla consulenza gratuita di 30 min
