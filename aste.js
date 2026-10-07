@@ -5,6 +5,17 @@
   var list = document.getElementById('aste-list');
   if (!list) return;
 
+  function categorizza(t) {
+    var s = (t || '').toLowerCase();
+    if (/terreno|agricol/.test(s)) return 'terreno';
+    if (/capannone|industriale|opificio/.test(s)) return 'capannone';
+    if (/negozio|locale commerciale|bottega/.test(s)) return 'negozio';
+    if (/ufficio|studio/.test(s)) return 'ufficio';
+    if (/garage|box|posto auto|autorimessa/.test(s)) return 'garage';
+    if (/oro|argento|gioiell|antiquari|orologio|dipinto|quadro|mobili antichi|collezione/.test(s)) return 'beni';
+    return 'residenziale';
+  }
+  var FILTRO = 'tutti';
   function caricaRegione(r) {
     return fetch('./aste-dati-' + r + '.json').then(function (res) {
       if (!res.ok) throw new Error('no feed');
@@ -12,7 +23,9 @@
     });
   }
 
+  var ULTIMI = null;
   function render(dati) {
+    ULTIMI = dati;
     if (!dati.aste || !dati.aste.length) {
       var vuoto = document.createElement('p');
       vuoto.className = 'small';
@@ -26,6 +39,8 @@
     var tagEl = document.getElementById('lista-tag');
     if (tagEl) tagEl.textContent = 'Live · ' + (dati.regione || 'Italia');
     dati.aste.forEach(function (a) {
+      var cat = categorizza(a.titolo || '');
+      if (FILTRO !== 'tutti' && cat !== FILTRO) return;
       var li = document.createElement('li');
       li.className = 'card';
       if (scelte.indexOf(a.id) !== -1) {
@@ -127,7 +142,25 @@
   fetch('./aste-master.json').then(function (r) { return r.json(); }).then(function (master) {
     var g = document.getElementById('regione-group');
     if (!g || !master.regioni) return;
-    master.regioni.forEach(function (reg) {
+    var CHIPS = [['tutti','Tutti'],['residenziale','Residenziale'],['terreno','Terreni'],['capannone','Capannoni'],['negozio','Negozi'],['ufficio','Uffici'],['garage','Garage & posti auto'],['beni','Antiquariato · Oro · Argento']];
+  var barraChips = document.createElement('div');
+  barraChips.className = 'chip-row';
+  CHIPS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip' + (c[0] === FILTRO ? ' chip-attivo' : '');
+    b.textContent = c[1];
+    b.addEventListener('click', function () {
+      FILTRO = c[0];
+      barraChips.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('chip-attivo'); });
+      b.classList.add('chip-attivo');
+      render(ULTIMI);
+    });
+    barraChips.appendChild(b);
+  });
+  var listaEl = document.getElementById('aste-list');
+  if (listaEl && listaEl.parentNode) listaEl.parentNode.insertBefore(barraChips, listaEl);
+  master.regioni.forEach(function (reg) {
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('data-r', reg);

@@ -1077,3 +1077,7 @@ EOF_JS
 .hc-card span { display: block; font-size: 0.8rem; opacity: .85; margin-top: 0.15rem; }
 @keyframes hc-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .hc-track { animation: none; } }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+.chip { border: 1px solid var(--line, #ddd); background: transparent; padding: .45rem .95rem; font-size: .82rem; cursor: pointer; border-radius: 2rem; color: var(--ink, #1A1A18); }
+.chip-attivo { background: var(--navy, #0F1E3A); color: #FDF6E3; border-color: var(--navy, #0F1E3A); }
