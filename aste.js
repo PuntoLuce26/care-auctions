@@ -13,7 +13,14 @@
   }
 
   function render(dati) {
-    if (!dati.aste || !dati.aste.length) { list.textContent = ''; return; }
+    if (!dati.aste || !dati.aste.length) {
+      var vuoto = document.createElement('p');
+      vuoto.className = 'small';
+      vuoto.textContent = 'No verified opportunities in this region right now — every auction must pass the full screening before being published. Try another region.';
+      list.textContent = '';
+      list.appendChild(vuoto);
+      return;
+    }
     list.textContent = '';
     var scelte = dati.scelteICAre || [];
     var tagEl = document.getElementById('lista-tag');
@@ -43,12 +50,6 @@
         var tx = document.createElement('span'); tx.className = 'aste-foto-note'; tx.textContent = 'Photos are in the official appraisal file — iCARe sends them to you on request.';
         ph.appendChild(ic); ph.appendChild(tx);
         li.appendChild(ph);
-      }
-      if (!aste.length) {
-        var vuoto = document.createElement('p');
-        vuoto.className = 'small';
-        vuoto.textContent = 'No verified opportunities in this region right now — every auction must pass the full screening before being published. Try another region.';
-        listEl.appendChild(vuoto);
       }
       if (a.professionisti && a.professionisti.length) {
         var prof = document.createElement('p');
