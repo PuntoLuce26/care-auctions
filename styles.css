@@ -1109,3 +1109,23 @@ EOF_JS
 .page-registrati .intro-btns button:hover { background: rgba(15,30,58,.07); }
 .page-registrati .wallet-row { justify-content: center; margin-top: 1.2rem; }
 .mic-btn { border: none; background: transparent; font-size: 1.2rem; cursor: pointer; padding: .2rem .4rem; }
+/* ── VERSIONE SMARTPHONE (5.183) — pensata per il pollice, stile Apple ── */
+@media (max-width: 640px) {
+  .container { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .header-inner { flex-direction: column; gap: .7rem; padding: .9rem 0 .6rem; }
+  .brand { justify-content: center; }
+  .nav-list { flex-wrap: wrap; justify-content: center; gap: .4rem .9rem; font-size: .9rem; }
+  .intro-btns { overflow-x: auto; white-space: nowrap; justify-content: flex-start; padding-bottom: .2rem; }
+  .page-head h1, .home-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+  .page-head .lead, .home-tagline { font-size: 1rem; }
+  .home-ask { flex-direction: column; gap: .7rem; }
+  .home-ask input, .home-ask button { width: 100%; }
+  .chip-row { overflow-x: auto; white-space: nowrap; padding-bottom: .2rem; }
+  .cifre { grid-template-columns: 1fr 1fr; }
+  .wallet-row { flex-direction: column; }
+  .wallet-row .btn { width: 100%; }
+  .site-footer { text-align: center; }
+  .page-registrati main.container { padding-top: 4vh; }
+  .page-registrati .intro-btns { justify-content: flex-start; }
+  .hero-carousel { display: none; }
+}
