@@ -15,6 +15,7 @@
     if (/oro|argento|gioiell|antiquari|orologio|dipinto|quadro|mobili antichi|collezione/.test(s)) return 'beni';
     return 'residenziale';
   }
+  var ABBONATO = (window.ICAReAbbonato === true);
   var FILTRO = 'tutti';
   function caricaRegione(r) {
     return fetch('./aste-dati-' + r + '.json').then(function (res) {
@@ -40,6 +41,7 @@
     if (tagEl) tagEl.textContent = 'Live · ' + (dati.regione || 'Italia');
     dati.aste.forEach(function (a) {
       var cat = categorizza(a.titolo || '');
+      if (FILTRO !== 'tutti' && !ABBONATO) return;
       if (FILTRO !== 'tutti' && cat !== FILTRO) return;
       var li = document.createElement('li');
       li.className = 'card';
@@ -149,8 +151,9 @@
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'chip' + (c[0] === FILTRO ? ' chip-attivo' : '');
-    b.textContent = c[1];
+    b.textContent = c[1] + (c[0] !== 'tutti' && !ABBONATO ? ' 🔒' : '');
     b.addEventListener('click', function () {
+      if (c[0] !== 'tutti' && !ABBONATO) { alert('Il filtro e tutti i servizi si sbloccano con l\u0027abbonamento iCARe Gold (59,90/mese). La consultazione resta gratuita.'); return; }
       FILTRO = c[0];
       barraChips.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('chip-attivo'); });
       b.classList.add('chip-attivo');
