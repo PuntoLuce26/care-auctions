@@ -9,7 +9,7 @@
     if (bot || pagineLibere) return;
     if (location.pathname === '/registrati.html') return;
     if (localStorage.getItem('icare-pioniere') !== '1') {
-      // FASE VETRINA (5.172): accesso libero; la registrazione è un invito, non un blocco
+      location.replace('registrati.html');
     }
   } catch (e) {}
 })();
