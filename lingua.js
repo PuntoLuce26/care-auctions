@@ -41,9 +41,20 @@
   }
   var scelta = leggi();
   if (!scelta) {
-    scelta = linguaDaZona() || linguaDaNavigatore();
-    // richiesta POSIZIONE (permesso del browser): solo per allineare la lingua; mai coordinate salvate
-    if (navigator.geolocation) { try { navigator.geolocation.getCurrentPosition(function(){}, function(){}, { timeout: 4000 }); } catch (e) {} }
+    // 5.188: DEFAULT INGLESE. L allineamento alla zona avviene SOLO se l utente dà il consenso alla posizione.
+    scelta = 'en';
+    if (navigator.geolocation) {
+      try {
+        navigator.geolocation.getCurrentPosition(function () {
+          var dallaZona = linguaDaZona();
+          if (dallaZona && dallaZona !== 'en') {
+            scelta = dallaZona;
+            salva(scelta);
+            if (location.pathname === '/') window.location.replace(scelta + '/index.html');
+          }
+        }, function () {}, { timeout: 5000 });
+      } catch (e) {}
+    }
     salva(scelta);
     // sulla home radice: va subito alla homepage localizzata
     if (location.pathname === '/' && scelta !== 'en') { window.location.replace(scelta + '/index.html'); }

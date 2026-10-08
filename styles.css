@@ -1088,23 +1088,23 @@ EOF_JS
 .intro-btns button { border: 1px solid var(--line, #ddd); background: transparent; padding: .35rem .7rem; border-radius: 2rem; font-size: .8rem; cursor: pointer; }
 .wallet-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0; }
 /* ── REGISTRAZIONE: stile Apple con il tocco di iCARe (5.178) ── */
-.page-registrati { background: #FDF6E3; }
-.page-registrati .site-header { border-bottom: none; background: transparent; }
+.page-registrati { background: #FFFFFF; }
+.page-registrati .site-header { border-bottom: 1px solid #EDEFF2; background: #FFFFFF; }
 .page-registrati main.container { max-width: 640px; margin: 0 auto; padding-top: 9vh; text-align: center; }
 .page-registrati .page-head h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 300; letter-spacing: -0.02em; color: #0F1E3A; }
 .page-registrati .page-head .lead { font-size: 1.15rem; font-weight: 400; color: #4A5568; max-width: 30rem; margin: 0 auto; }
 .page-registrati .lang-bar { color: #0F1E3A; opacity: .8; font-size: .8rem; letter-spacing: .06em; margin-bottom: 3.5rem; }
-.page-registrati .registrazione { text-align: left; max-width: 30rem; margin: 0 auto; }
+.page-registrati .registrazione { text-align: left; max-width: 30rem; margin: 0 auto; border: none; background: transparent; box-shadow: none; }
 .page-registrati h2 { font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; color: #0F1E3A; margin-top: 2.2rem; }
 .page-registrati p { color: #3E4A5C; }
 .page-registrati input[type=text], .page-registrati input[type=email], .page-registrati input[type=tel], .page-registrati select { width: 100%; border: none; border-bottom: 1px solid #CBD5E0; background: transparent; padding: .65rem 0; font: inherit; font-size: 1.05rem; color: #0F1E3A; outline: none; transition: border-color .2s; }
 .page-registrati input:focus, .page-registrati select:focus { border-bottom-color: #0F1E3A; }
-.page-registrati fieldset { border: none; padding: 0; margin: .6rem 0 0; }
+.page-registrati fieldset { border: none; border-top: 1px solid #EDEFF2; padding: .6rem 0 0; margin: 1rem 0 0; }
 .page-registrati fieldset legend { font-size: .85rem; color: #4A5568; padding: 0; }
 .page-registrati .btn { border-radius: 2rem; padding: .85rem 1.9rem; font-weight: 500; letter-spacing: .01em; }
 .page-registrati .btn-primary { background: #0F1E3A; color: #FDF6E3; border: none; }
 .page-registrati .btn-secondary { background: transparent; border: 1px solid #0F1E3A; color: #0F1E3A; }
-.page-registrati .intro-btns { justify-content: center; margin: 1.6rem 0 .4rem; }
+.page-registrati .intro-btns { justify-content: center; margin: 0; align-items: center; }
 .page-registrati .intro-btns button { border: none; background: transparent; color: #0F1E3A; font-size: .9rem; font-weight: 500; padding: .4rem .9rem; border-radius: 2rem; }
 .page-registrati .intro-btns button:hover { background: rgba(15,30,58,.07); }
 .page-registrati .wallet-row { justify-content: center; margin-top: 1.2rem; }
@@ -1129,3 +1129,7 @@ EOF_JS
   .page-registrati .intro-btns { justify-content: flex-start; }
   .hero-carousel { display: none; }
 }
+
+.page-registrati .header-inner { align-items: center; gap: 1rem; }
+.page-registrati .intro-btns, .page-registrati .nav-list { margin: 0; }
+.page-registrati .intro-btns button { padding: .3rem .8rem; font-size: .82rem; }
