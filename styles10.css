@@ -1162,3 +1162,15 @@ a { color: var(--navy); }
 .site-footer a { color: #9AA3B2; text-decoration: none; }
 .site-footer a:hover { color: #0F1E3A; }
 .site-footer p { margin: .3rem 0; }
+/* ── TINTA UNITA LUSSO MINIMALE (5.200): porcellana ovunque, selettore lingue monocromo ── */
+body { background: #F7F8FA; }
+.site-header { background: #F7F8FA; }
+.page-registrati { background: #F7F8FA !important; }
+.page-registrati .site-header { background: #F7F8FA !important; }
+.page-registrati .registrazione { background: transparent; }
+.card, .cifre li { background: #F7F8FA; }
+.hero-carousel { background: transparent; }
+.lingua-sel, .lang-bar { font-size: .78rem; letter-spacing: .12em; color: #0F1E3A; }
+.lingua-sel a, .lang-bar a, .lang-btn { color: #9AA3B2; text-decoration: none; font-weight: 500; }
+.lingua-sel a:hover, .lang-btn:hover { color: #0F1E3A; }
+.lang-attivo { color: #0F1E3A !important; border-bottom: 1px solid #0F1E3A; }
