@@ -176,7 +176,26 @@
     b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
   });
 
-  form.addEventListener("submit", function (e) {
+      // RENDERING (5.164): comando render → iCARe disegna e mostra l'immagine
+    function mostraRender(text) {
+      addBubble(["🎨 Preparo il rendering…"], "bot");
+      fetch(PROXY, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ azione: "render", testo: text }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.immagine) {
+            var li = addBubble([], "bot");
+            var img = el("img", "bubble-img", null);
+            img.src = d.immagine;
+            img.alt = "Rendering di iCARe";
+            li.appendChild(img);
+            addVoice(li);
+          } else {
+            addBubble([d.errore || "Rendering non riuscito: descrivi meglio il progetto."], "bot");
+          }
+        })
+        .catch(function () { addBubble(["Rendering non riuscito."], "bot"); });
+    }
+    form.addEventListener("submit", function (e) {
     e.preventDefault();
     var text = input.value.trim();
     if (!text) return;
@@ -184,6 +203,7 @@
     addBubble([text], "user").lastChild.dir = "auto";
     input.value = "";
     var PROXY = "https://icare-ai.misty-mode-1cbc.workers.dev";
+    if (/render|rendering|disegna|immagina|progettami/.test(text)) { mostraRender(text); return; }
     fetch(PROXY, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messaggio: text, lingua: lang }) })
       .then(function (r) { return r.json(); })
       .then(function (d) {
