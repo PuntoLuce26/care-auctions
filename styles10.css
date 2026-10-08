@@ -1074,3 +1074,10 @@ EOF_JS
 .chip-attivo { background: var(--navy, #0F1E3A); color: #FDF6E3; border-color: var(--navy, #0F1E3A); }
 .bubble-img { max-width: 100%; border-radius: 1rem; margin-top: .4rem; display: block; }
 .bubble-img { max-width: 100%; border-radius: 1rem; margin-top: .4rem; display: block; }
+
+.cifre { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; padding: 0; }
+.cifre li { border: 1px solid var(--line, #ddd); border-radius: 1rem; padding: 1.1rem; text-align: center; }
+.cifre strong { display: block; font-size: 1.8rem; color: var(--navy, #0F1E3A); }
+.cifre span { font-size: .85rem; opacity: .75; }
+.grafico { max-width: 640px; margin: 1rem auto; }
+.grafico svg { width: 100%; height: auto; }
