@@ -50,6 +50,26 @@
           <label for="p-cel">Cellulare (per la conferma SMS)</label>
           <input type="tel" id="p-cel" required>
         </p>
+        <p>
+          <label for="p-eta">Fascia d'età</label>
+          <select id="p-eta">
+            <option value="">Preferisco non dirlo</option>
+            <option>18-24</option><option>25-34</option><option>35-44</option><option>45-54</option><option>55-64</option><option>65+</option>
+          </select>
+        </p>
+        <p>
+          <label for="p-citta">La tua città</label>
+          <input type="text" id="p-citta" placeholder="es. Cagliari">
+        </p>
+        <fieldset>
+          <legend>I tuoi interessi (i gusti della Community)</legend>
+          <p><label><input type="checkbox" id="g-aste"> Aste giudiziarie</label></p>
+          <p><label><input type="checkbox" id="g-buynow"> Buy Now</label></p>
+          <p><label><input type="checkbox" id="g-ihouse"> iHouse modulare</label></p>
+          <p><label><input type="checkbox" id="g-ishop"> Arredo e iShop</label></p>
+          <p><label><input type="checkbox" id="g-invest"> Investimento</label></p>
+          <p><label><input type="checkbox" id="g-primacasa"> Prima casa</label></p>
+        </fieldset>
         <p><label><input type="checkbox" id="p-privacy" required> Acconsento al trattamento dei dati personali (GDPR — informativa su privacy.html).</label></p>
         <p><label><input type="checkbox" id="p-news"> Voglio ricevere gli aggiornamenti della Rivoluzione iUmana (posso disiscrivermi in qualsiasi momento).</label></p>
         <p><button type="submit" class="btn btn-primary">Diventa pioniere</button></p>

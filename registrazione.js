@@ -1,29 +1,31 @@
-/* registrazione.js — Sam 5.0 · il flusso pionieri (5.169).
- * Fase attuale: i dati partono verso info@puntoluce26.com (mailto) e si salvano in locale;
- * appena Supabase è collegato (5.170), il flusso diventa: POST → DB → mail conferma + SMS OTP. */
+/* registrazione.js v2 — Sam 5.0 · pionieri + profilo completo (5.171):
+ * età (fascia), città, gusti (aste, buy now, iHouse, iShop, investimento, prima casa).
+ * Geolocalizzazione a livello di città (mai coordinate precise: privacy). Consenso GDPR. */
 (function () {
   var f = document.getElementById('forma-pioniere');
   if (!f) return;
   f.addEventListener('submit', function (e) {
     e.preventDefault();
-    var nome = document.getElementById('p-nome').value.trim();
-    var email = document.getElementById('p-email').value.trim();
-    var cel = document.getElementById('p-cel').value.trim();
-    var news = document.getElementById('p-news').checked;
+    var V = function (id) { var x = document.getElementById(id); return x ? x.value.trim() : ''; };
+    var nome = V('p-nome'), email = V('p-email'), cel = V('p-cel'), eta = V('p-eta'), citta = V('p-citta');
     var esito = document.getElementById('p-esito');
     if (!nome || !email || !cel) { esito.textContent = 'Compila tutti i campi.'; return; }
     if (!document.getElementById('p-privacy').checked) { esito.textContent = 'Serve il consenso privacy.'; return; }
-    // registro locale (il database reale arriva con Supabase)
+    var gusti = [];
+    ['g-aste', 'g-buynow', 'g-ihouse', 'g-ishop', 'g-invest', 'g-primacasa'].forEach(function (id) {
+      var x = document.getElementById(id);
+      if (x && x.checked) gusti.push(id.slice(2));
+    });
+    var news = document.getElementById('p-news').checked;
+    var pioniere = { nome: nome, email: email, cellulare: cel, eta: eta, citta: citta, gusti: gusti, news: news, data: new Date().toISOString() };
     try {
       var lista = JSON.parse(localStorage.getItem('icare-pionieri') || '[]');
-      lista.push({ nome: nome, email: email, cellulare: cel, news: news, data: new Date().toISOString() });
+      lista.push(pioniere);
       localStorage.setItem('icare-pionieri', JSON.stringify(lista));
       localStorage.setItem('icare-pioniere', '1');
     } catch (err) {}
-    // la richiesta arriva alla casella gestita (info@puntoluce26.com)
-    var oggetto = 'Nuovo pioniere iCommunity — ' + nome;
-    var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nConsenso privacy: SI\nAggiornamenti iUmani: ' + (news ? 'SI' : 'NO') + '\nData: ' + new Date().toISOString();
-    window.location.href = 'mailto:info@puntoluce26.com?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);
-    esito.textContent = '✅ Benvenuto tra i pionieri. Conferma la mail che si è aperta: entri subito nella fase di costruzione.';
+    var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nEtà: ' + eta + '\nCittà: ' + citta + '\nGusti: ' + (gusti.join(', ') || '—') + '\nAggiornamenti: ' + (news ? 'SI' : 'NO') + '\nData: ' + new Date().toISOString();
+    window.location.href = 'mailto:info@puntoluce26.com?subject=' + encodeURIComponent('Nuovo pioniere iCommunity — ' + nome) + '&body=' + encodeURIComponent(corpo);
+    esito.textContent = '✅ Benvenuto tra i pionieri. Conferma la mail che si è aperta.';
   });
 })();
