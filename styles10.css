@@ -1156,3 +1156,9 @@ input, select, textarea { border: 1px solid var(--line); border-radius: .8rem; }
 a { color: var(--navy); }
 .chip { border-color: var(--line); }
 .chip-attivo { background: var(--navy); color: #FFFFFF; }
+/* ── FOOTER stile iCARe (5.199): più in basso, più piccolo, più elegante ── */
+.site-footer { margin-top: 5rem; padding: 2.2rem 0 3.2rem; font-size: .72rem; line-height: 1.7; color: #9AA3B2; letter-spacing: .02em; }
+.site-footer strong { color: #6B7280; font-weight: 500; }
+.site-footer a { color: #9AA3B2; text-decoration: none; }
+.site-footer a:hover { color: #0F1E3A; }
+.site-footer p { margin: .3rem 0; }
