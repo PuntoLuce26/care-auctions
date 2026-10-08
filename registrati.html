@@ -15,6 +15,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <div class="intro-btns"><button type="button" data-vai="sez-vetrina">La vetrina</button><button type="button" data-vai="sez-come">Come funziona</button><button type="button" data-vai="sez-world">iCARe World</button></div>
       <nav aria-label="Main">
         <ul class="nav-list">
           <li><a href="aste.html">Auctions</a></li>
@@ -29,15 +30,16 @@
     <div class="page-head">
       <h1>I pionieri.</h1>
       <p class="lead">Stiamo mettendo a punto qualcosa che il mondo non ha mai visto. Entra prima degli altri.</p>
-      <p class="lang-bar" aria-label="Lingue"><span>IT</span> · <a href="en/index.html" data-lingua="en">EN</a> · <a href="de/index.html" data-lingua="de">DE</a> · <a href="es/index.html" data-lingua="es">ES</a> · <a href="fr/index.html" data-lingua="fr">FR</a> · <a href="ru/index.html" data-lingua="ru">RU</a> · <a href="ja/index.html" data-lingua="ja">JA</a> · <a href="ar/index.html" data-lingua="ar">AR</a> · <a href="hi/index.html" data-lingua="hi">HI</a> · <a href="ko/index.html" data-lingua="ko">KO</a> · <a href="zh/index.html" data-lingua="zh">ZH</a> · <a href="pt/index.html" data-lingua="pt">PT</a> · <a href="pl/index.html" data-lingua="pl">PL</a> · <a href="uk/index.html" data-lingua="uk">UK</a> · <a href="vi/index.html" data-lingua="vi">VI</a> · <a href="ro/index.html" data-lingua="ro">RO</a> · <a href="tl/index.html" data-lingua="tl">TL</a> · <a href="el/index.html" data-lingua="el">EL</a> · <a href="nl/index.html" data-lingua="nl">NL</a> · <a href="sv/index.html" data-lingua="sv">SV</a></p>
+      <p class="lang-bar" aria-label="Lingue"><button type="button" class="lang-btn lang-attivo" data-sel="it">IT</button> · <button type="button" class="lang-btn" data-sel="en">EN</button> · <button type="button" class="lang-btn" data-sel="de">DE</button> · <button type="button" class="lang-btn" data-sel="es">ES</button> · <button type="button" class="lang-btn" data-sel="fr">FR</button> · <button type="button" class="lang-btn" data-sel="ru">RU</button> · <button type="button" class="lang-btn" data-sel="ja">JA</button> · <button type="button" class="lang-btn" data-sel="ar">AR</button> · <button type="button" class="lang-btn" data-sel="hi">HI</button> · <button type="button" class="lang-btn" data-sel="ko">KO</button> · <button type="button" class="lang-btn" data-sel="zh">ZH</button> · <button type="button" class="lang-btn" data-sel="pt">PT</button> · <button type="button" class="lang-btn" data-sel="pl">PL</button> · <button type="button" class="lang-btn" data-sel="uk">UK</button> · <button type="button" class="lang-btn" data-sel="vi">VI</button> · <button type="button" class="lang-btn" data-sel="ro">RO</button> · <button type="button" class="lang-btn" data-sel="tl">TL</button> · <button type="button" class="lang-btn" data-sel="el">EL</button> · <button type="button" class="lang-btn" data-sel="nl">NL</button> · <button type="button" class="lang-btn" data-sel="sv">SV</button></p>
     </div>
 
-    <section class="registrazione">
+    <section id="sez-vetrina" class="registrazione">
       <h2>L'accesso.</h2>
       <p>In questa fase di costruzione l'accesso richiede la <strong>registrazione</strong>: dopo l'ingresso vedi la <strong>vetrina</strong> di tutte le aste pubblicate da pvp.giustizia — iCARe ti accompagna nella navigazione. Lavoriamo dietro le quinte e apriamo i servizi uno a uno, quando sono pronti.</p>
+      <section id="sez-come"><h2>Come funziona.</h2></section>
       <p><strong>I primi 1.000 iscritti: il primo anno di abbonamento è gratuito</strong> (pagheranno solo la commissione sulle transazioni iShop e la success fee come previsto).</p>
       <p><strong>Gli abbonamenti:</strong> Gold con vincolo 12 mesi <strong>€59,90/mese</strong> · Gold mensile senza vincolo <strong>€69,90/mese</strong>.</p>
-      <p><strong>iCare Inclusione:</strong> per over 70 e persone con disabilità certificata (L. 104/92), <strong>sconto del 50%</strong> e assistenza umana prioritaria.</p>
+      <p><strong><section id="sez-world"></section>iCARe World:</strong> per over 70 e persone con disabilità certificata (L. 104/92), <strong>sconto del 50%</strong> e assistenza umana prioritaria.</p>
 
       <h2>Registrati.</h2>
       <form id="forma-pioniere" aria-label="Registrazione pioniere">
@@ -75,7 +77,9 @@
         </fieldset>
         <p><label><input type="checkbox" id="p-privacy" required> Acconsento al trattamento dei dati personali (GDPR — informativa su privacy.html).</label></p>
         <p><label><input type="checkbox" id="p-news"> Voglio ricevere gli aggiornamenti della Rivoluzione iUmana (posso disiscrivermi in qualsiasi momento).</label></p>
+        <p class="wallet-row"><button type="button" class="btn btn-secondary" id="btn-google">Continua con Google</button> <button type="button" class="btn btn-secondary" id="btn-apple"> Continua con Apple</button> <button type="button" class="btn btn-secondary" id="btn-wallet">Registra il wallet</button></p>
         <p><button type="submit" class="btn btn-primary">Diventa pioniere</button></p>
+        <p class="small">Registrati con Google, Apple o email: il tuo <strong>wallet</strong> (Apple Pay / Google Pay) si collega al checkout — noi prendiamo dal wallet solo ciò che serve, al momento giusto.</p>
         <p class="small" id="p-esito"></p>
       </form>
       <p class="small">Dopo l'invio riceverai una mail per confermare l'indirizzo e un SMS per confermare il numero. Poi entri — con le limitazioni della fase di costruzione, che si libereranno quando tutto sarà pronto.</p>
