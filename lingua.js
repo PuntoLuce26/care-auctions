@@ -13,9 +13,37 @@
     for (var i = 0; i < nostre.length; i++) { if (n.indexOf(nostre[i]) === 0) return nostre[i]; }
     return 'en';
   }
+  // 5.176: verifica della POSIZIONE (chiede il permesso) → allinea subito alla lingua della zona
+  function linguaDaZona() {
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (/Europe\/Rome|Europe\/Vatican|Europe\/San_Marino/.test(tz)) return 'it';
+      if (/America\//.test(tz)) return 'en';
+      if (/Europe\/Berlin|Europe\/Vienna|Europe\/Zurich/.test(tz)) return 'de';
+      if (/Europe\/Madrid/.test(tz)) return 'es';
+      if (/Europe\/Paris|Europe\/Brussels/.test(tz)) return 'fr';
+      if (/Asia\/Tokyo/.test(tz)) return 'ja';
+      if (/Asia\/Seoul/.test(tz)) return 'ko';
+      if (/Asia\/Shanghai|Asia\/Taipei/.test(tz)) return 'zh';
+      if (/Europe\/Moscow|Europe\/Kiev|Europe\/Uzhgorod/.test(tz)) return tz.indexOf('Kiev') >= 0 ? 'uk' : 'ru';
+      if (/Asia\/Manila/.test(tz)) return 'tl';
+      if (/Europe\/Athens/.test(tz)) return 'el';
+      if (/Europe\/Amsterdam/.test(tz)) return 'nl';
+      if (/Europe\/Stockholm/.test(tz)) return 'sv';
+      if (/Asia\/Kolkata/.test(tz)) return 'hi';
+      if (/Europe\/Warsaw/.test(tz)) return 'pl';
+      if (/Europe\/Lisbon/.test(tz)) return 'pt';
+      if (/Europe\/Bucharest/.test(tz)) return 'ro';
+      if (/Asia\/Ho_Chi_Minh|Asia\/Hanoi/.test(tz)) return 'vi';
+      if (/Asia\/Riyadh|Africa\/Cairo|Asia\/Dubai/.test(tz)) return 'ar';
+    } catch (e) {}
+    return null;
+  }
   var scelta = leggi();
   if (!scelta) {
-    scelta = linguaDaNavigatore();
+    scelta = linguaDaZona() || linguaDaNavigatore();
+    // richiesta POSIZIONE (permesso del browser): solo per allineare la lingua; mai coordinate salvate
+    if (navigator.geolocation) { try { navigator.geolocation.getCurrentPosition(function(){}, function(){}, { timeout: 4000 }); } catch (e) {} }
     salva(scelta);
     // sulla home radice: va subito alla homepage localizzata
     if (location.pathname === '/' && scelta !== 'en') { window.location.replace(scelta + '/index.html'); }
