@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
+  <title>Contratto di abbonamento e patto di success fee · CARe Auctions</title>
+  <meta name="description" content="Contratto di incarico per i servizi CARe Auctions: abbonamento, success fee all'aggiudicazione (1,9% prima casa, 2,9% seconda), firma con OTP. Regolare e legale.">
+  <link rel="canonical" href="https://careauctions.co/contratto-abbonamento.html">
+  <link rel="stylesheet" href="styles10.css">
+</head>
+<body class="page-contratto">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo-crop logo-nav"><img src="assets/logo-careauctions-pulito.svg" alt="CARe Auctions — home"></span></a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="aste.html">Auctions</a></li>
+          <li><a href="buy-now.html">Buy Now</a></li>
+          <li><a href="icare.html">iCARe</a></li>
+          <li><a href="ishop.html">iShop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-head">
+      <h1>Il contratto.</h1>
+      <p class="lead">Abbonarsi significa firmare: regole chiare, tutto legale, tutto perfetto.</p>
+    </div>
+
+    <h2>1. L'incarico.</h2>
+    <p>Con l'abbonamento, il Cliente conferisce a <strong>PuntoLuce Srls</strong> (P.IVA 04240850927, Via Calamattia 21, 09134 Cagliari) l'incarico di consulenza e assistenza per l'acquisto di immobili all'asta giudiziaria e i servizi collegati (analisi, verifica documentale, visite, offerta, partecipazione, rivendita, iShop).</p>
+
+    <h2>2. L'abbonamento.</h2>
+    <p>iCARe Gold: <strong>€59,90/mese</strong> (servizi di rivendita inclusi). iShop: <strong>€9,90/mese</strong> se non incluso nel Gold. Rinnovo automatico, disattivabile in qualsiasi momento dall'account (5.146). I servizi restano attivi fino al termine della procedura (aggiudicazione, rogito, decreto di trasferimento).</p>
+
+    <h2>3. La success fee (il cuore del patto).</h2>
+    <p>Al raggiungimento dell'<strong>aggiudicazione</strong>, il Cliente riconosce a PuntoLuce Srls la success fee:</p>
+    <ul>
+      <li><strong>1,90%</strong> sul prezzo di aggiudicazione se è la prima casa</li>
+      <li><strong>2,90%</strong> sulla seconda e successive</li>
+      <li>Rivendita: <strong>1,50%</strong> prima casa · <strong>2,50%</strong> seconda</li>
+    </ul>
+    <p>La fee si paga alla conclusione dell'aggiudicazione. Il servizio di analisi e assistenza resta dovuto anche in caso di mancata aggiudicazione secondo i prezzi dei servizi singoli.</p>
+
+    <h2>4. La firma (OTP + FaceID).</h2>
+    <p>Il Cliente firma questo contratto con <strong>firma elettronica con OTP</strong> (codice monouso inviato al cellulare del Cliente, che ne manifesta la volontà) — valida ai sensi dell'art. 20 del Codice dell'Amministrazione Digitale — e conferma la propria identità con <strong>FaceID/TouchID</strong> sul proprio dispositivo. La firma viene registrata con data, ora e riferimento del dispositivo.</p>
+
+    <h2>5. Legalità e trasparenza.</h2>
+    <p>Il contratto è regolato dalla legge italiana. Il Cliente ha diritto di recesso nei termini di legge. Ogni documento resta conservato e disponibile su richiesta a <a href="mailto:info@puntoluce26.com">info@puntoluce26.com</a>.</p>
+
+    <h2>6. La missione.</h2>
+    <p>Il 20% dei ricavi va alle opere di bene — iDream. <strong>La casa è il bene primario di ogni essere umano.</strong></p>
+
+    <h3>Firma elettronica.</h3>
+    <form id="forma-firma" aria-label="Firma con OTP">
+      <p>
+        <label for="f-nome">Nome e cognome</label>
+        <input type="text" id="f-nome" required>
+      </p>
+      <p>
+        <label for="f-cel">Cellulare (per l'OTP)</label>
+        <input type="tel" id="f-cel" required>
+      </p>
+      <p>
+        <button type="button" class="btn btn-primary" id="btn-otp">Invia OTP</button>
+        <label for="f-otp" class="visually-hidden">Codice OTP</label>
+        <input type="text" id="f-otp" placeholder="Codice ricevuto" maxlength="8">
+      </p>
+      <p><label><input type="checkbox" id="f-ok"> Ho letto e accetto il contratto: success fee 1,90%/2,90% all'aggiudicazione.</label></p>
+      <p><button type="button" class="btn btn-primary" id="btn-firma">Firma con OTP</button></p>
+      <p class="small" id="f-esito"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>CARe Auctions by <strong>PuntoLuce Srls</strong> — Via Calamattia 21, 09134 Cagliari (CA) · P.IVA 04240850927 · <a href="mailto:info@puntoluce26.com">info@puntoluce26.com</a></p>
+      <p><a href="privacy.html">Privacy policy</a> · <a href="cookie.html">Cookie policy</a> · <a href="terms.html">Terms</a> · <a href="about.html">About</a> · <a href="manifesto.html">Manifesto</a></p>
+    </div>
+  </footer>
+  <script src="abbonamento.js"></script>
+  <script src="cookies.js"></script>
+</body>
+</html>
