@@ -28,58 +28,58 @@
 
   <main id="main" class="container">
     <div class="page-head">
-      <h1>I pionieri.</h1>
-      <p class="lead">Stiamo mettendo a punto qualcosa che il mondo non ha mai visto. Entra prima degli altri.</p>
+      <h1 id="titolo-page">I pionieri.</h1>
+      <p class="lead" id="lead-page">Stiamo mettendo a punto qualcosa che il mondo non ha mai visto. Entra prima degli altri.</p>
       <p class="lang-bar" aria-label="Lingue"><button type="button" class="lang-btn lang-attivo" data-sel="it">IT</button> · <button type="button" class="lang-btn" data-sel="en">EN</button> · <button type="button" class="lang-btn" data-sel="de">DE</button> · <button type="button" class="lang-btn" data-sel="es">ES</button> · <button type="button" class="lang-btn" data-sel="fr">FR</button> · <button type="button" class="lang-btn" data-sel="ru">RU</button> · <button type="button" class="lang-btn" data-sel="ja">JA</button> · <button type="button" class="lang-btn" data-sel="ar">AR</button> · <button type="button" class="lang-btn" data-sel="hi">HI</button> · <button type="button" class="lang-btn" data-sel="ko">KO</button> · <button type="button" class="lang-btn" data-sel="zh">ZH</button> · <button type="button" class="lang-btn" data-sel="pt">PT</button> · <button type="button" class="lang-btn" data-sel="pl">PL</button> · <button type="button" class="lang-btn" data-sel="uk">UK</button> · <button type="button" class="lang-btn" data-sel="vi">VI</button> · <button type="button" class="lang-btn" data-sel="ro">RO</button> · <button type="button" class="lang-btn" data-sel="tl">TL</button> · <button type="button" class="lang-btn" data-sel="el">EL</button> · <button type="button" class="lang-btn" data-sel="nl">NL</button> · <button type="button" class="lang-btn" data-sel="sv">SV</button></p>
     </div>
 
     <section id="sez-vetrina" class="registrazione">
-      <h2>L'accesso.</h2>
-      <p>In questa fase di costruzione l'accesso richiede la <strong>registrazione</strong>: dopo l'ingresso vedi la <strong>vetrina</strong> di tutte le aste pubblicate da pvp.giustizia — iCARe ti accompagna nella navigazione. Lavoriamo dietro le quinte e apriamo i servizi uno a uno, quando sono pronti.</p>
+      <h2 id="h2-accesso">L'accesso.</h2>
+      <p id="vetrina-page">In questa fase di costruzione l'accesso richiede la <strong>registrazione</strong>: dopo l'ingresso vedi la <strong>vetrina</strong> di tutte le aste pubblicate da pvp.giustizia — iCARe ti accompagna nella navigazione. Lavoriamo dietro le quinte e apriamo i servizi uno a uno, quando sono pronti.</p>
       <section id="sez-come"><h2>Come funziona.</h2></section>
-      <p><strong>I primi 1.000 iscritti: il primo anno di abbonamento è gratuito</strong> (pagheranno solo la commissione sulle transazioni iShop e la success fee come previsto).</p>
-      <p><strong>Gli abbonamenti:</strong> Gold con vincolo 12 mesi <strong>€59,90/mese</strong> · Gold mensile senza vincolo <strong>€69,90/mese</strong>.</p>
-      <p><strong><section id="sez-world"></section>iCARe World:</strong> per over 70 e persone con disabilità certificata (L. 104/92), <strong>sconto del 50%</strong> e assistenza umana prioritaria.</p>
+      <p id="mille-page"><strong>I primi 1.000 iscritti: il primo anno di abbonamento è gratuito</strong> (pagheranno solo la commissione sulle transazioni iShop e la success fee come previsto).</p>
+      <p id="piani-page"><strong>Gli abbonamenti:</strong> Gold con vincolo 12 mesi <strong>€59,90/mese</strong> · Gold mensile senza vincolo <strong>€69,90/mese</strong>.</p>
+      <p><strong><section id="sez-world"></section><span id="world-page">iCARe World:</strong> per over 70 e persone con disabilità certificata (L. 104/92), <strong>sconto del 50%</strong> e assistenza umana prioritaria.</p>
 
-      <h2>Registrati.</h2>
+      <h2 id="h2-reg">Registrati.</h2>
       <form id="forma-pioniere" aria-label="Registrazione pioniere">
         <p>
-          <label for="p-nome">Nome e cognome</label>
+          <label for="p-nome" id="lb-nome">Nome e cognome</label>
           <input type="text" id="p-nome" required>
         </p>
         <p>
-          <label for="p-email">Email</label>
+          <label for="p-email" id="lb-email">Email</label>
           <input type="email" id="p-email" required>
         </p>
         <p>
-          <label for="p-cel">Cellulare (per la conferma SMS)</label>
+          <label for="p-cel" id="lb-cel">Cellulare (per la conferma SMS)</label>
           <input type="tel" id="p-cel" required>
         </p>
         <p>
-          <label for="p-eta">Fascia d'età</label>
+          <label for="p-eta" id="lb-eta">Fascia d'età</label>
           <select id="p-eta">
             <option value="">Preferisco non dirlo</option>
             <option>18-24</option><option>25-34</option><option>35-44</option><option>45-54</option><option>55-64</option><option>65+</option>
           </select>
         </p>
         <p>
-          <label for="p-citta">La tua città</label>
+          <label for="p-citta" id="lb-citta">La tua città</label>
           <input type="text" id="p-citta" placeholder="es. Cagliari">
         </p>
         <fieldset>
-          <legend>I tuoi interessi (i gusti della Community)</legend>
-          <p><label><input type="checkbox" id="g-aste"> Aste giudiziarie</label></p>
-          <p><label><input type="checkbox" id="g-buynow"> Buy Now</label></p>
-          <p><label><input type="checkbox" id="g-ihouse"> iHouse modulare</label></p>
-          <p><label><input type="checkbox" id="g-ishop"> Arredo e iShop</label></p>
-          <p><label><input type="checkbox" id="g-invest"> Investimento</label></p>
-          <p><label><input type="checkbox" id="g-primacasa"> Prima casa</label></p>
+          <legend id="lg-gusti">I tuoi interessi (i gusti della Community)</legend>
+          <p><label><input type="checkbox" id="g-aste"> Aste giudiziarie</label><span id="lb-g1" hidden>ASTE</span></p>
+          <p><label><input type="checkbox" id="g-buynow"> Buy Now</label><span id="lb-g2" hidden>BN</span></p>
+          <p><label><input type="checkbox" id="g-ihouse"> iHouse modulare</label><span id="lb-g3" hidden>IH</span></p>
+          <p><label><input type="checkbox" id="g-ishop"> Arredo e iShop</label><span id="lb-g4" hidden>IS</span></p>
+          <p><label><input type="checkbox" id="g-invest"> Investimento</label><span id="lb-g5" hidden>IN</span></p>
+          <p><label><input type="checkbox" id="g-primacasa"> Prima casa</label><span id="lb-g6" hidden>PC</span></p>
         </fieldset>
-        <p><label><input type="checkbox" id="p-privacy" required> Acconsento al trattamento dei dati personali (GDPR — informativa su privacy.html).</label></p>
-        <p><label><input type="checkbox" id="p-news"> Voglio ricevere gli aggiornamenti della Rivoluzione iUmana (posso disiscrivermi in qualsiasi momento).</label></p>
+        <p><label><input type="checkbox" id="p-privacy" required> <span id="lb-p1">Acconsento al trattamento dei dati personali (GDPR — informativa su privacy.html).</span></label></p>
+        <p><label><input type="checkbox" id="p-news"> <span id="lb-p2">Voglio ricevere gli aggiornamenti della Rivoluzione iUmana (posso disiscrivermi in qualsiasi momento).</span></label></p>
         <p class="wallet-row"><button type="button" class="btn btn-secondary" id="btn-google">Continua con Google</button> <button type="button" class="btn btn-secondary" id="btn-apple"> Continua con Apple</button> <button type="button" class="btn btn-secondary" id="btn-wallet">Registra il wallet</button></p>
-        <p><button type="submit" class="btn btn-primary">Diventa pioniere</button></p>
-        <p class="small">Registrati con Google, Apple o email: il tuo <strong>wallet</strong> (Apple Pay / Google Pay) si collega al checkout — noi prendiamo dal wallet solo ciò che serve, al momento giusto.</p>
+        <p><button type="submit" class="btn btn-primary" id="btn-pioniere">Diventa pioniere</button></p>
+        <p class="small" id="wallet-note">Registrati con Google, Apple o email: il tuo <strong>wallet</strong> (Apple Pay / Google Pay) si collega al checkout — noi prendiamo dal wallet solo ciò che serve, al momento giusto.</p>
         <p class="small" id="p-esito"></p>
       </form>
       <p class="small">Dopo l'invio riceverai una mail per confermare l'indirizzo e un SMS per confermare il numero. Poi entri — con le limitazioni della fase di costruzione, che si libereranno quando tutto sarà pronto.</p>
