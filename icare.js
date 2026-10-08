@@ -13,7 +13,7 @@
   var input = document.getElementById("chat-input");
   var langButtons = document.querySelectorAll("#lang-group button");
   /* Voce demo: sintesi vocale del browser (window.speechSynthesis), nessuna rete da parte dell'app. */
-  var synth = ("speechSynthesis" in window && "SpeechSynthesisUtterance" in window) ? window.speechSynthesis : null;
+  var synth = null; // 5.180: iCARe non parla — solo scrive (la voce vera arriverà con Emergent)
   /* Icone SVG statiche (costanti, mai testo dell'utente). */
   var ICON_LISTEN = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>';
   var ICON_STOP = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>';
