@@ -844,7 +844,7 @@ body.home > main { display: flex; }
 .home-ask input::placeholder { color: #626760; }
 .home-ask .btn { flex: none; margin: 0; min-height: 44px; padding: 0.6rem 1.35rem; }
 .home-trust { font-size: 1rem; font-weight: 500; line-height: 1.6; letter-spacing: 0.01em; color: var(--muted, #555); margin: 1.25rem 0 0; }
-body.home .site-footer { margin-top: 0; border-top-color: transparent; background: transparent; }
+body.home .site-footer { margin-top: 6.5rem; border-top-color: transparent; background: transparent; }
 
 /* ── 18. iCARe: orbita fluttuante, in basso a destra su ogni pagina ── */
 
