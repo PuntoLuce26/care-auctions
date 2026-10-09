@@ -47,6 +47,14 @@
       var pioniere = { nome: nome, email: email, cellulare: cel, eta: eta, citta: citta, gusti: gusti, news: news, lingua: lang, data: new Date().toISOString() };
       try { var lista = JSON.parse(localStorage.getItem('icare-pionieri') || '[]'); lista.push(pioniere); localStorage.setItem('icare-pionieri', JSON.stringify(lista)); localStorage.setItem('icare-pioniere', '1'); } catch (err) {}
       var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nEtà: ' + eta + '\nCittà: ' + citta + '\nGusti: ' + (gusti.join(', ') || '—') + '\nLingua: ' + lang + '\nAggiornamenti: ' + (news ? 'SI' : 'NO');
+      /* 5.211: il pioniere entra nel database Supabase (privacy: solo insert, mai letture pubbliche) */
+      try {
+        fetch('https://gzhfjhmjcqauubemhidx.supabase.co/rest/v1/pionieri', {
+          method: 'POST',
+          headers: { 'apikey': 'sb_publishable__1RO87dmE7rQ82JSJ5Nk4Q_7r21yWj5', 'Authorization': 'Bearer sb_publishable__1RO87dmE7rQ82JSJ5Nk4Q_7r21yWj5', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome: nome, email: email, cellulare: cel, citta: citta, interessi: gusti })
+        }).catch(function () {});
+      } catch (err) {}
       window.location.href = 'mailto:info@puntoluce26.com?subject=' + encodeURIComponent('Nuovo pioniere — ' + nome) + '&body=' + encodeURIComponent(corpo);
       esito.textContent = (T[lang] || T.it).grazie;
     });
