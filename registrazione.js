@@ -64,7 +64,8 @@
         }).catch(function () {});
       } catch (err) {}
       window.location.href = 'mailto:info@puntoluce26.com?subject=' + encodeURIComponent('Nuovo pioniere — ' + nome) + '&body=' + encodeURIComponent(corpo);
-      esito.textContent = (T[lang] || T.it).grazie;
+      var gNome = nome.toLowerCase().split(' ')[0]; var maschiA = ['andrea','luca','mattia','nicola','elia']; var femmina = gNome.endsWith('a') && maschiA.indexOf(gNome) < 0;
+      esito.textContent = (femmina ? 'Benvenuta tra i pionieri, ' : 'Benvenuto tra i pionieri, ') + nome.split(' ')[0] + '. Conferma la mail che si è aperta.';
     });
   }
   applica();
