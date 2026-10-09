@@ -1186,3 +1186,6 @@ body { background: #F7F8FA; }
 #cookie-bar button { background: #0F1E3A; color: #FFFFFF; border: none; border-radius: 2rem; padding: .5rem 1.1rem; }
 #cookie-bar a { color: #0F1E3A; }
 body { padding-bottom: env(safe-area-inset-bottom); }
+/* ── 5.213: il design del reference (porcellana + oro) resta; footer ancora più piccolo e più in basso ── */
+.site-footer { margin-top: 6.5rem; padding: 2rem 0 4rem; font-size: .66rem; letter-spacing: .03em; color: #A6AEB8; }
+.site-footer p { margin: .2rem 0; }
