@@ -1174,3 +1174,15 @@ body { background: #F7F8FA; }
 .lingua-sel a, .lang-bar a, .lang-btn { color: #9AA3B2; text-decoration: none; font-weight: 500; }
 .lingua-sel a:hover, .lang-btn:hover { color: #0F1E3A; }
 .lang-attivo { color: #0F1E3A !important; border-bottom: 1px solid #0F1E3A; }
+/* ── FIX MOBILE (5.202): header pulito, spaziature, cookie bar leggibile, safe-area ── */
+@media (max-width: 640px) {
+  .page-registrati .nav-list { display: none; }
+  .page-registrati .intro-btns { width: 100%; justify-content: center; margin-top: .9rem; }
+  .header-inner { gap: .9rem; }
+  .lang-bar { margin-top: 1.6rem !important; }
+  .page-head { padding-top: .5rem; }
+}
+#cookie-bar { background: #FFFFFF; color: #1A1F2E; border-top: 1px solid #EDEFF2; padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom)); font-size: .78rem; }
+#cookie-bar button { background: #0F1E3A; color: #FFFFFF; border: none; border-radius: 2rem; padding: .5rem 1.1rem; }
+#cookie-bar a { color: #0F1E3A; }
+body { padding-bottom: env(safe-area-inset-bottom); }
