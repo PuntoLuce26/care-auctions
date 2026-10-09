@@ -47,6 +47,14 @@
       var pioniere = { nome: nome, email: email, cellulare: cel, eta: eta, citta: citta, gusti: gusti, news: news, lingua: lang, data: new Date().toISOString() };
       try { var lista = JSON.parse(localStorage.getItem('icare-pionieri') || '[]'); lista.push(pioniere); localStorage.setItem('icare-pionieri', JSON.stringify(lista)); localStorage.setItem('icare-pioniere', '1'); } catch (err) {}
       var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nEtà: ' + eta + '\nCittà: ' + citta + '\nGusti: ' + (gusti.join(', ') || '—') + '\nLingua: ' + lang + '\nAggiornamenti: ' + (news ? 'SI' : 'NO');
+      /* 5.214: il worker riceve l iscrizione, salva nel database con la chiave di servizio e avvisa la proprietà via mail */
+      try {
+        fetch('https://icare-ai.misty-mode-1cbc.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ azione: 'registrazione', chiave: 'iLuce-regia-2026-segreto', nome: nome, email: email, cellulare: cel, citta: citta, interessi: gusti, lingua: lang })
+        }).catch(function () {});
+      } catch (err) {}
       /* 5.211: il pioniere entra nel database Supabase (privacy: solo insert, mai letture pubbliche) */
       try {
         fetch('https://gzhfjhmjcqauubemhidx.supabase.co/rest/v1/pionieri', {
