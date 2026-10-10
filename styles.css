@@ -1060,14 +1060,11 @@ main#main.container > section[aria-label="Who we are"] p { font-size: 0.85rem; c
 #cookie-bar { position: fixed; inset-inline: 0; bottom: 0; background: var(--navy, #0F1E3A); color: #FDF6E3; font-size: 0.82rem; padding: 0.9rem 1.25rem; z-index: 60; display: flex; justify-content: center; }
 #cookie-bar p { margin: 0; display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
 #cookie-bar button { background: var(--gold, #D4A84B); color: var(--navy, #0F1E3A); border: none; font-weight: 700; padding: 0.45rem 1.1rem; cursor: pointer; border-radius: 0; }
-#cookie-bar a { color: var(--gold, #D4A84B); }
-EOF_JS
-
+#cookie-bar a { color: var(--gold, #D4A84
 .lingua-sel { font-size: 0.8rem; letter-spacing: 0.06em; color: #6B6557; }
 .lingua-sel a { color: #6B6557; text-decoration: none; margin: 0 0.15rem; }
 .lingua-sel a:hover { color: var(--navy, #0F1E3A); }
 
- }
 
 .chip-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
 .chip { border: 1px solid var(--line, #ddd); background: transparent; padding: .45rem .95rem; font-size: .82rem; cursor: pointer; border-radius: 2rem; color: var(--ink, #1A1A18); }
