@@ -59,16 +59,7 @@
       var nt = tr(t);
       if (nt !== t) a.textContent = nt;
     });
-    // footer società
-    document.querySelectorAll('.site-footer p:first-child, .seo-pagina .entita p').forEach(function (p) {
-      var l = lingua();
-      var ft = L.footer[l] || L.footer.en;
-      if (ft && p.textContent.indexOf('PuntoLuce') >= 0 && p.textContent.length < 200) {
-        var rest = p.textContent.replace(/^[^·]*·[^·]*/, '').replace(/CARe Auctions[^·]*·[^·]*/, '');
-        p.textContent = ft + (rest || '');
-      }
-    });
-    document.documentElement.lang = lingua();
+        document.documentElement.lang = lingua();
   }
 
   document.addEventListener('DOMContentLoaded', applica);
