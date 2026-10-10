@@ -41,8 +41,9 @@
   }
   var scelta = leggi();
   if (!scelta) {
-    // 5.188: DEFAULT INGLESE. L allineamento alla zona avviene SOLO se l utente dà il consenso alla posizione.
-    scelta = 'en';
+    // 5.241: RILEVAMENTO AUTOMATICO: prima la lingua del BROWSER (nessun permesso), poi la posizione solo con consenso (5.188).
+    scelta = linguaDaNavigatore() || 'en';
+    if (scelta !== 'en') { salva(scelta); if (location.pathname === '/') window.location.replace(scelta + '/index.html'); }
     if (navigator.geolocation) {
       try {
         navigator.geolocation.getCurrentPosition(function () {

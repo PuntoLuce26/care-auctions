@@ -70,6 +70,7 @@
     });
   }
   var LS = 'icare-lingua';
+  try { if (!localStorage.getItem(LS)) { var nl = (navigator.language || '').slice(0,2).toLowerCase(); if (T[nl]) lang = nl; } } catch (e) {}
   try { if (!localStorage.getItem(LS)) localStorage.setItem(LS, lang); } catch (e) {}
   applica();
 })();
