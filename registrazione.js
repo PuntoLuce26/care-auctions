@@ -69,5 +69,7 @@
       esito.textContent = (femmina ? 'Benvenuta tra i pionieri, ' : 'Benvenuto tra i pionieri, ') + nome.split(' ')[0] + '. Controlla la tua casella: la lettera di benvenuto sta arrivando (guarda anche lo spam).';
     });
   }
+  var LS = 'icare-lingua';
+  try { if (!localStorage.getItem(LS)) localStorage.setItem(LS, lang); } catch (e) {}
   applica();
 })();
