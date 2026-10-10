@@ -1189,3 +1189,14 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 /* ── 5.213: il design del reference (porcellana + oro) resta; footer ancora più piccolo e più in basso ── */
 .site-footer { margin-top: 6.5rem; padding: 2rem 0 4rem; font-size: .66rem; letter-spacing: .03em; color: #A6AEB8; }
 .site-footer p { margin: .2rem 0; }
+/* ── FIX MOBILE COMPLETO (5.227): header impilato, selettore lingue toccabile, cookie bar tradotta ── */
+@media (max-width: 640px) {
+  .page-registrati .header-inner { flex-direction: column; align-items: center; text-align: center; gap: .55rem; padding: .9rem 0 .4rem; }
+  .page-registrati .intro-btns { flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+  .page-registrati .intro-btns button { padding: .45rem .95rem; font-size: .85rem; }
+  .brand { margin: 0; }
+  .lingua-sel a, .lang-btn { display: inline-block; padding: .32rem .5rem; margin: .08rem .02rem; color: #3D4859; font-weight: 600; }
+  .page-head { padding-top: .2rem; }
+  body { padding-bottom: 7rem; }
+}
+#cookie-bar { font-size: .74rem; line-height: 1.5; }
