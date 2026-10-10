@@ -1224,3 +1224,9 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 .site-footer { color: #4A5568 !important; font-size: .8rem !important; line-height: 1.7 !important; }
 .site-footer p { color: #4A5568 !important; }
 .site-footer a { color: #0F1E3A !important; }
+/* 5.264: home essenziale — spazi giusti, CTA chiara, logo leggibile */
+.home-welcome { max-width: 46rem; margin: 0 auto; text-align: center; }
+.home-extra { margin-top: 2.2rem; }
+.home-links a { margin: 0 .5rem; color: #0F1E3A; }
+.logo-nav { letter-spacing: .04em; }
+.home-trust { color: #4A5568; font-size: .9rem; }
