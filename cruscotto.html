@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://icare-ai.misty-mode-1cbc.workers.dev; script-src 'self'; style-src 'self'">
+  <title>Cruscotto PuntoLuce — statistiche dal giorno 1</title>
+  <link rel="stylesheet" href="styles10.css">
+  <style>
+    .cifre { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .cifre li { border: 1px solid #EDEFF2; border-radius: 1rem; padding: 1rem; list-style: none; }
+    .cifre b { display: block; font-size: 2rem; font-weight: 300; color: #0F1E3A; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { text-align: left; padding: .5rem .8rem; border-bottom: 1px solid #EDEFF2; font-size: .9rem; }
+    th { color: #9AA3B2; font-weight: 500; letter-spacing: .05em; }
+  </style>
+</head>
+<body class="page-registrati">
+  <main class="container" id="main">
+    <div class="page-head"><h1>Il mondo, in numeri.</h1><p class="lead">Statistiche dal giorno 1 — visite, nazioni, pagine. Riservato.</p></div>
+    <ul class="cifre" id="cifre"></ul>
+    <h2>Per giorno</h2><div id="giorno"></div>
+    <h2>Per nazione</h2><div id="paese"></div>
+  </main>
+  <script>
+    (function () {
+      var CHIAVE = 'iLuce-regia-2026-segreto';
+      function post(body) {
+        return fetch('https://icare-ai.misty-mode-1cbc.workers.dev', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({ chiave: CHIAVE }, body))
+        }).then(function (r) { return r.json(); }).catch(function () { return {}; });
+      }
+      function tab(righe) {
+        var t = '<table><tr><th>Voce</th><th>Valore</th></tr>';
+        righe.forEach(function (r) { t += '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; });
+        return t + '</table>';
+      }
+      post({ azione: 'stat:storico' }).then(function (s) {
+        var g = s.giorno || {}, p = s.paese || {};
+        var tot = 0, gg = [], pp = [];
+        Object.keys(g).sort().forEach(function (d) { tot += Number(g[d]) || 0; gg.push([d, g[d] + ' visite']); });
+        Object.keys(p).sort().forEach(function (k) { pp.push([k, p[k] + ' visite']); });
+        var el = document.getElementById('cifre');
+        el.innerHTML = '<li><b>' + tot + '</b>visite totali dal giorno 1</li>' +
+          '<li><b>' + Object.keys(g).length + '</b>giorni online</li>' +
+          '<li><b>' + Object.keys(p).length + '</b>nazioni toccate</li>';
+        document.getElementById('giorno').innerHTML = tab(gg);
+        document.getElementById('paese').innerHTML = tab(pp);
+      });
+    })();
+  </script>
+</body>
+</html>
