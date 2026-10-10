@@ -1230,3 +1230,8 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 .home-links a { margin: 0 .5rem; color: #0F1E3A; }
 .logo-nav { letter-spacing: .04em; }
 .home-trust { color: #4A5568; font-size: .9rem; }
+/* 5.264b: logo mobile contenuto */
+@media (max-width: 640px) {
+  .logo-nav { width: min(200px, 60vw) !important; }
+  .home-title { font-size: 2rem; }
+}
