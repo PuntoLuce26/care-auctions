@@ -1200,3 +1200,10 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   body { padding-bottom: 7rem; }
 }
 #cookie-bar { font-size: .74rem; line-height: 1.5; }
+/* 5.227b: bottoni intro in colonna su mobile, banner compatto */
+@media (max-width: 640px) {
+  .page-registrati .intro-btns { flex-direction: column; width: 100%; }
+  .page-registrati .intro-btns button { width: 100%; }
+  #cookie-bar { padding: .6rem .9rem calc(.6rem + env(safe-area-inset-bottom)); }
+  #cookie-bar p { margin: 0; }
+}
