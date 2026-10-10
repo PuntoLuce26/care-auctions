@@ -1220,3 +1220,7 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 .lingua-sel { border-top: 1px solid #EDEFF2; padding-top: .6rem; margin-top: .6rem; }
 .lingua-sel a { color: #3D4859; }
 .lingua-sel a:hover { color: #0F1E3A; }
+/* 5.259: FOOTER LEGGIBILE, regola finale (batte tutte le precedenti) */
+.site-footer { color: #4A5568 !important; font-size: .8rem !important; line-height: 1.7 !important; }
+.site-footer p { color: #4A5568 !important; }
+.site-footer a { color: #0F1E3A !important; }
