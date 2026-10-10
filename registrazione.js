@@ -28,6 +28,8 @@
     var map = { 'titolo-page': t.h1, 'lead-page': t.lead, 'h2-accesso': t.accesso, 'vetrina-page': t.vetrina, 'mille-page': t.mille, 'piani-page': t.piani, 'world-page': t.world, 'h2-reg': t.reg, 'lb-nome': t.nome, 'lb-email': t.email, 'lb-cel': t.cel, 'lb-eta': t.eta, 'lb-citta': t.citta, 'lg-gusti': t.gusti, 'lb-g1': t.g1, 'lb-g2': t.g2, 'lb-g3': t.g3, 'lb-g4': t.g4, 'lb-g5': t.g5, 'lb-g6': t.g6, 'lb-p1': t.p1, 'lb-p2': t.p2, 'btn-pioniere': t.btn, 'nota-dopo': (t.nota || T.en.nota), 'wallet-note': t.wallet };
     Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) el.textContent = map[id]; });
     document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.toggle('lang-attivo', b.getAttribute('data-sel') === lang); });
+    var barP = document.querySelector('#cookie-bar p');
+    if (barP) barP.textContent = (lang === 'it' ? 'Usiamo solo cookie tecnici essenziali: ricordiamo solo la lingua scelta. Nessuna profilazione, nessun dato venduto. Continuando, accetti. ' : 'We use no profiling cookies: only your language choice is remembered. Continuing means you accept. ');
   }
   document.querySelectorAll('.lang-btn').forEach(function (b) { b.addEventListener('click', function () { lang = b.getAttribute('data-sel'); applica(); }); });
   document.querySelectorAll('.intro-btns button').forEach(function (b) { b.addEventListener('click', function () { var el = document.getElementById(b.getAttribute('data-vai')); if (el) el.scrollIntoView({ behavior: 'smooth' }); }); });
