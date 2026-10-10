@@ -46,7 +46,7 @@
       var news = document.getElementById('p-news').checked;
       var pioniere = { nome: nome, email: email, cellulare: cel, eta: eta, citta: citta, gusti: gusti, news: news, lingua: lang, data: new Date().toISOString() };
       try { var lista = JSON.parse(localStorage.getItem('icare-pionieri') || '[]'); lista.push(pioniere); localStorage.setItem('icare-pionieri', JSON.stringify(lista)); localStorage.setItem('icare-pioniere', '1'); } catch (err) {}
-      var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nEtà: ' + eta + '\nCittà: ' + citta + '\nGusti: ' + (gusti.join(', ') || '—') + '\nLingua: ' + lang + '\nAggiornamenti: ' + (news ? 'SI' : 'NO');
+      /* la mail automatica parte dal worker, non dal dispositivo dell utente */ var corpo = 'Nome: ' + nome + '\nEmail: ' + email + '\nCellulare: ' + cel + '\nEtà: ' + eta + '\nCittà: ' + citta + '\nGusti: ' + (gusti.join(', ') || '—') + '\nLingua: ' + lang + '\nAggiornamenti: ' + (news ? 'SI' : 'NO');
       /* 5.214: il worker riceve l iscrizione, salva nel database con la chiave di servizio e avvisa la proprietà via mail */
       try {
         fetch('https://icare-ai.misty-mode-1cbc.workers.dev', {
@@ -63,7 +63,6 @@
           body: JSON.stringify({ nome: nome, email: email, cellulare: cel, citta: citta, interessi: gusti })
         }).catch(function () {});
       } catch (err) {}
-      window.location.href = 'mailto:info@puntoluce26.com?subject=' + encodeURIComponent('Nuovo pioniere — ' + nome) + '&body=' + encodeURIComponent(corpo);
       var gNome = nome.toLowerCase().split(' ')[0]; var maschiA = ['andrea','luca','mattia','nicola','elia']; var femmina = gNome.endsWith('a') && maschiA.indexOf(gNome) < 0;
       esito.textContent = (femmina ? 'Benvenuta tra i pionieri, ' : 'Benvenuto tra i pionieri, ') + nome.split(' ')[0] + '. Conferma la mail che si è aperta.';
     });
