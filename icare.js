@@ -1,4 +1,7 @@
 /* Demo guidata deterministica: nessuna AI, nessuna rete, nessun salvataggio. */
+(function tester(){
+  try { var u=new URLSearchParams(location.search); if(u.get('tester')==='iLuce-regia-2026-segreto') localStorage.setItem('icare-tester','1'); } catch(e){}
+})();
 (function () {
   var M = window.ICARE_MESSAGES;
   /* Ordine e numero degli argomenti dalle chiavi di topics (a-g): un nuovo argomento in icare-messages.js compare da solo nel menu. */
