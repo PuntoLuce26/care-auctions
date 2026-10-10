@@ -1217,3 +1217,10 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 @media (max-width: 640px) {
   .page-registrati .header-inner { display: flex !important; flex-direction: column !important; align-items: center !important; }
 }
+/* 5.256: Apple-like — stesso colore ovunque, linee capello sopra/banner e sopra footer */
+.site-header { background: #F7F8FA; border-bottom: 1px solid #EDEFF2; }
+.home-hero, .hero, .banner { background: #F7F8FA; border-bottom: 1px solid #EDEFF2; }
+.site-footer { border-top: 1px solid #EDEFF2; }
+.lingua-sel { border-top: 1px solid #EDEFF2; padding-top: .6rem; margin-top: .6rem; }
+.lingua-sel a { color: #3D4859; }
+.lingua-sel a:hover { color: #0F1E3A; }
