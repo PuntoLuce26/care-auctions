@@ -788,11 +788,7 @@ html[data-scale='1.15'] .chat-form label { flex-basis: 12rem; }
 
 /* ── 17. Home: centro vuoto, domanda discreta in basso ─────────────── */
 body.home {
-  background:
-    radial-gradient(70% 45% at 50% 100%, rgba(201, 168, 106, 0.20), transparent 70%),
-    radial-gradient(50% 35% at 50% 0%, rgba(252, 250, 245, 0.9), transparent 70%),
-    var(--paper);
-  background-attachment: fixed;
+  background: #F7F8FA;
 }
 body.home .logo-nav { width: clamp(220px, 34vw, 440px); }
 body.home > main { display: flex; }
