@@ -1213,3 +1213,7 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   .page-registrati .intro-btns { order: 2; width: 100%; }
   .page-registrati .brand { padding: 0 .6rem; }
 }
+/* 5.230c: header-inner è GRID di base: su mobile torna FLEX in colonna (la vera soluzione) */
+@media (max-width: 640px) {
+  .page-registrati .header-inner { display: flex !important; flex-direction: column !important; align-items: center !important; }
+}
