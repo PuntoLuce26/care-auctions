@@ -1210,3 +1210,9 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   .page-registrati .intro-btns button { width: auto; background: transparent; border: none; box-shadow: none; color: #0F1E3A; font-size: .72rem; font-weight: 500; letter-spacing: .08em; padding: .2rem .7rem; border-radius: 0; }
   .page-registrati .intro-btns button + button { border-left: 1px solid #EDEFF2; }
 }
+/* 5.230b: header mobile FORZATO a colonna (logo sopra, riga discreta sotto), niente sovrapposizioni */
+@media (max-width: 640px) {
+  .page-registrati .header-inner { flex-direction: column !important; align-items: center !important; }
+  .page-registrati .intro-btns { order: 2; width: 100%; }
+  .page-registrati .brand { padding: 0 .6rem; }
+}

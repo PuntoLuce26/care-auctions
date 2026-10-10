@@ -9,6 +9,7 @@
   bar.setAttribute('aria-label', 'Cookie notice');
   var t = document.createElement('p');
   var lx = ''; try { lx = (localStorage.getItem('icare-lingua') || '').slice(0, 2); } catch (e) {}
+  if (!lx) { try { lx = (document.documentElement.lang || '').slice(0, 2); } catch (e) {} }
   t.textContent = lx === 'it' ? 'Usiamo solo cookie tecnici essenziali: ricordiamo solo la lingua scelta. Nessuna profilazione, nessun dato venduto. Continuando, accetti. ' : 'We use no profiling cookies: only your language choice is remembered. Continuing means you accept. ';
   var ok = document.createElement('button');
   ok.type = 'button';

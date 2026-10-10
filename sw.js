@@ -1,6 +1,6 @@
 /* CARe Auctions — service worker: offline completo, cache-first, solo same-origin.
    Nessuna richiesta esterna viene mai toccata. Versione cache: v1 */
-const CACHE = 'care-auctions-v103';
+const CACHE = 'care-auctions-v104';
 const CORE = [
   './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
   './assets/logo-careauctions-pulito.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png',
