@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://icare-ai.misty-mode-1cbc.workers.dev; script-src 'self'; style-src 'self'">
-  <title>Cruscotto PuntoLuce — statistiche dal giorno 1</title>
+  <title>Cruscotto PuntoLuce — tutto, dal giorno 1</title>
   <link rel="stylesheet" href="styles10.css">
   <style>
-    .cifre { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .cifre { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
     .cifre li { border: 1px solid #EDEFF2; border-radius: 1rem; padding: 1rem; list-style: none; }
     .cifre b { display: block; font-size: 2rem; font-weight: 300; color: #0F1E3A; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    th, td { text-align: left; padding: .5rem .8rem; border-bottom: 1px solid #EDEFF2; font-size: .9rem; }
+    table { width: 100%; border-collapse: collapse; margin: .6rem 0 1.4rem; }
+    th, td { text-align: left; padding: .45rem .7rem; border-bottom: 1px solid #EDEFF2; font-size: .88rem; }
     th { color: #9AA3B2; font-weight: 500; letter-spacing: .05em; }
+    svg { width: 100%; height: auto; margin: .5rem 0 1.2rem; }
+    h2 { margin-top: 2rem; }
+    .gusti { display: inline-block; border: 1px solid #EDEFF2; border-radius: 2rem; padding: .2rem .7rem; margin: .15rem; font-size: .78rem; }
   </style>
 </head>
 <body class="page-registrati">
   <main class="container" id="main">
-    <div class="page-head"><h1>Il mondo, in numeri.</h1><p class="lead">Statistiche dal giorno 1 — visite, nazioni, pagine. Riservato.</p></div>
+    <div class="page-head"><h1>Il mondo, in numeri.</h1><p class="lead">Tutto, dal giorno 1 — visite, nazioni, pagine, pionieri e gusti. Riservato.</p></div>
     <ul class="cifre" id="cifre"></ul>
-    <h2>Per giorno</h2><div id="giorno"></div>
-    <h2>Per nazione</h2><div id="paese"></div>
+    <h2>📈 Visite per giorno (grafico)</h2>
+    <div id="grafico"></div>
+    <h2>🌍 Per nazione</h2>
+    <div id="paese"></div>
+    <h2>📄 Per pagina</h2>
+    <div id="pagina"></div>
+    <h2>👥 I pionieri (e i loro gusti)</h2>
+    <div id="pionieri"></div>
   </main>
   <script>
     (function () {
@@ -33,21 +42,52 @@
         }).then(function (r) { return r.json(); }).catch(function () { return {}; });
       }
       function tab(righe) {
+        if (!righe.length) return '<p class="lead">Ancora nessun dato.</p>';
         var t = '<table><tr><th>Voce</th><th>Valore</th></tr>';
         righe.forEach(function (r) { t += '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; });
         return t + '</table>';
       }
+      function barre(dati, unita) {
+        var chiavi = Object.keys(dati).sort();
+        if (!chiavi.length) return '';
+        var max = Math.max.apply(null, chiavi.map(function (k) { return Number(dati[k]) || 0; })) || 1;
+        var h = 24 + chiavi.length * 34;
+        var s = '<svg viewBox="0 0 480 ' + h + '" role="img" aria-label="grafico">';
+        chiavi.forEach(function (k, i) {
+          var v = Number(dati[k]) || 0;
+          var w = Math.max(4, Math.round((v / max) * 320));
+          var y = 18 + i * 34;
+          s += '<text x="0" y="' + (y + 12) + '" font-size="11" fill="#6B7280">' + k + '</text>';
+          s += '<rect x="150" y="' + y + '" width="' + w + '" height="20" rx="10" fill="#0F1E3A"></rect>';
+          s += '<text x="' + (156 + w) + '" y="' + (y + 14) + '" font-size="11" fill="#0F1E3A">' + v + unita + '</text>';
+        });
+        return s + '</svg>';
+      }
       post({ azione: 'stat:storico' }).then(function (s) {
-        var g = s.giorno || {}, p = s.paese || {};
-        var tot = 0, gg = [], pp = [];
-        Object.keys(g).sort().forEach(function (d) { tot += Number(g[d]) || 0; gg.push([d, g[d] + ' visite']); });
-        Object.keys(p).sort().forEach(function (k) { pp.push([k, p[k] + ' visite']); });
-        var el = document.getElementById('cifre');
-        el.innerHTML = '<li><b>' + tot + '</b>visite totali dal giorno 1</li>' +
+        var g = s.giorno || {}, p = s.paese || {}, pg = s.pagina || {};
+        var tot = Object.keys(g).reduce(function (a, k) { return a + (Number(g[k]) || 0); }, 0);
+        document.getElementById('cifre').innerHTML =
+          '<li><b>' + tot + '</b>visite dal giorno 1</li>' +
           '<li><b>' + Object.keys(g).length + '</b>giorni online</li>' +
-          '<li><b>' + Object.keys(p).length + '</b>nazioni toccate</li>';
-        document.getElementById('giorno').innerHTML = tab(gg);
-        document.getElementById('paese').innerHTML = tab(pp);
+          '<li><b>' + Object.keys(p).length + '</b>nazioni</li>' +
+          '<li><b>' + Object.keys(pg).length + '</b>pagine toccate</li>';
+        document.getElementById('grafico').innerHTML = barre(g, ' visite');
+        document.getElementById('paese').innerHTML = tab(Object.keys(p).sort().map(function (k) { return [k, p[k] + ' visite']; }));
+        document.getElementById('pagina').innerHTML = tab(Object.keys(pg).sort(function (a, b) { return (pg[b] || 0) - (pg[a] || 0); }).map(function (k) { return [k, pg[k] + ' visite']; }));
+      });
+      post({ azione: 'stat:pionieri' }).then(function (r) {
+        var lista = r.pionieri || [];
+        var gusti = {};
+        lista.forEach(function (p) { (p.interessi || []).forEach(function (g) { gusti[g] = (gusti[g] || 0) + 1; }); });
+        var nomi = { 'aste': 'Aste', 'buynow': 'Buy Now', 'ihouse': 'iHouse', 'ishop': 'iShop', 'invest': 'Investimento', 'primacasa': 'Prima casa', 'g-aste': 'Aste', 'g-buynow': 'Buy Now', 'g-ihouse': 'iHouse', 'g-ishop': 'iShop', 'g-invest': 'Investimento', 'g-primacasa': 'Prima casa' };
+        var html = '<ul class="cifre" style="margin-bottom:1rem"><li><b>' + lista.length + '</b>pionieri</li></ul>';
+        html += '<h2>I gusti della Community</h2><p>';
+        Object.keys(gusti).sort(function (a, b) { return (gusti[b] || 0) - (gusti[a] || 0); }).forEach(function (g) {
+          html += '<span class="gusti">' + (nomi[g] || g) + ' × ' + gusti[g] + '</span>';
+        });
+        html += '</p>';
+        html += tab(lista.map(function (p) { return [p.nome, (p.citta || '—') + ' · ' + ((p.interessi || []).map(function (g) { return nomi[g] || g; }).join(', ') || '—') + ' · ' + (p.creato_il || '').slice(0, 10)]; }));
+        document.getElementById('pionieri').innerHTML = html;
       });
     })();
   </script>
