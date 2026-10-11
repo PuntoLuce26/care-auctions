@@ -41,16 +41,24 @@
   }
   var scelta = leggi();
   if (!scelta) {
-    // 5.266: LA SCELTA MANUALE VINCE SEMPRE. L auto-rilevamento gira UNA SOLA volta (prima visita).
+    // 5.268: AUTO-RILEVAMENTO ALL ARRIVO (sempre, per ogni nuovo utente) + SCELTA MANUALE che vince per sempre.
+    var manuale = null;
+    try { manuale = localStorage.getItem('icare-lingua-manuale'); } catch (e) {}
     var salvata = leggi();
-    if (salvata) { scelta = salvata; }
-    else { scelta = linguaDaNavigatore() || 'en'; salva(scelta); if (scelta !== 'en' && location.pathname === '/') window.location.replace(scelta + '/index.html'); }
-    // click sul selettore: salva la nuova scelta PRIMA di navigare (mai più bloccati)
+    if (salvata && manuale === '1') { scelta = salvata; }
+    else {
+      // arrivo: rileva SEMPRE la lingua del browser (nessun permesso); la scelta manuale la blocca in seguito
+      scelta = linguaDaNavigatore() || salvata || 'en';
+      salva(scelta);
+      if (scelta !== 'en' && location.pathname === '/') window.location.replace(scelta + '/index.html');
+    }
+    // click sul selettore: scelta manuale -> vince per sempre
     document.addEventListener('click', function (ev) {
       var a = ev.target.closest && ev.target.closest('.lingua-sel a, .lang-btn');
       if (!a) return;
       var L = (a.getAttribute('data-lingua') || a.getAttribute('data-sel') || a.textContent || 'en').trim().toLowerCase().slice(0, 2);
       salva(L);
+      try { localStorage.setItem('icare-lingua-manuale', '1'); } catch (e) {}
     });
     if (navigator.geolocation) {
       try {
