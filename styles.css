@@ -788,7 +788,7 @@ html[data-scale='1.15'] .chat-form label { flex-basis: 12rem; }
 
 /* ── 17. Home: centro vuoto, domanda discreta in basso ─────────────── */
 body.home {
-  background: #F7F8FA;
+  background: #F4F1EA;
 }
 body.home .logo-nav { width: clamp(220px, 34vw, 440px); }
 body.home > main { display: flex; }
@@ -1156,10 +1156,10 @@ a { color: var(--navy); }
 .site-footer a:hover { color: #0F1E3A; }
 .site-footer p { margin: .3rem 0; }
 /* ── TINTA UNITA LUSSO MINIMALE (5.200): porcellana ovunque, selettore lingue monocromo ── */
-body { background: #F7F8FA; }
-.site-header { background: #F7F8FA; }
-.page-registrati { background: #F7F8FA !important; }
-.page-registrati .site-header { background: #F7F8FA !important; }
+body { background: #F4F1EA; }
+.site-header { background: #F4F1EA; }
+.page-registrati { background: #F4F1EA !important; }
+.page-registrati .site-header { background: #F4F1EA !important; }
 .page-registrati .registrazione { background: transparent; }
 .card, .cifre li { background: #F7F8FA; }
 .hero-carousel { background: transparent; }
@@ -1214,8 +1214,8 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   .page-registrati .header-inner { display: flex !important; flex-direction: column !important; align-items: center !important; }
 }
 /* 5.256: Apple-like — stesso colore ovunque, linee capello sopra/banner e sopra footer */
-.site-header { background: #F7F8FA; border-bottom: 1px solid #EDEFF2; }
-.home-hero, .hero, .banner { background: #F7F8FA; border-bottom: 1px solid #EDEFF2; }
+.site-header { background: #F4F1EA; border-bottom: 1px solid #E5DFD2; }
+.home-hero, .hero, .banner { background: #F4F1EA; border-bottom: 1px solid #E5DFD2; }
 .site-footer { border-top: 1px solid #EDEFF2; }
 .lingua-sel { border-top: 1px solid #EDEFF2; padding-top: .6rem; margin-top: .6rem; }
 .lingua-sel a { color: #3D4859; }
