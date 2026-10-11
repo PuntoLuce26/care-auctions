@@ -41,9 +41,17 @@
   }
   var scelta = leggi();
   if (!scelta) {
-    // 5.241: RILEVAMENTO AUTOMATICO: prima la lingua del BROWSER (nessun permesso), poi la posizione solo con consenso (5.188).
-    scelta = linguaDaNavigatore() || 'en';
-    if (scelta !== 'en') { salva(scelta); if (location.pathname === '/') window.location.replace(scelta + '/index.html'); }
+    // 5.266: LA SCELTA MANUALE VINCE SEMPRE. L auto-rilevamento gira UNA SOLA volta (prima visita).
+    var salvata = leggi();
+    if (salvata) { scelta = salvata; }
+    else { scelta = linguaDaNavigatore() || 'en'; salva(scelta); if (scelta !== 'en' && location.pathname === '/') window.location.replace(scelta + '/index.html'); }
+    // click sul selettore: salva la nuova scelta PRIMA di navigare (mai più bloccati)
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('.lingua-sel a, .lang-btn');
+      if (!a) return;
+      var L = (a.getAttribute('data-lingua') || a.getAttribute('data-sel') || a.textContent || 'en').trim().toLowerCase().slice(0, 2);
+      salva(L);
+    });
     if (navigator.geolocation) {
       try {
         navigator.geolocation.getCurrentPosition(function () {

@@ -1235,3 +1235,8 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   .logo-nav { width: min(200px, 60vw) !important; }
   .home-title { font-size: 2rem; }
 }
+
+/* 5.266: CREMA CALDA #F4F1EA — regole finali, battono ogni vecchia regola */
+body, body.home, .site-header, .page-registrati, .page-registrati .site-header, .card, .cifre li, .home-hero, .hero, .banner { background: #F4F1EA !important; }
+.site-header { border-bottom-color: #E5DFD2 !important; }
+.home-hero, .hero, .banner { border-bottom-color: #E5DFD2 !important; }
