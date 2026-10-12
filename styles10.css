@@ -1240,3 +1240,7 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 body, body.home, .site-header, .page-registrati, .page-registrati .site-header, .card, .cifre li, .home-hero, .hero, .banner { background: #F4F1EA !important; }
 .site-header { border-bottom-color: #E5DFD2 !important; }
 .home-hero, .hero, .banner { border-bottom-color: #E5DFD2 !important; }
+
+/* 5.312: TUTTE le voci del menu sempre visibili (via maschere e scorrimento) */
+.header-inner > nav { overflow-x: visible !important; mask-image: none !important; -webkit-mask-image: none !important; margin-inline: 0 !important; }
+.nav-list { flex-wrap: wrap !important; justify-content: center !important; width: auto !important; }
