@@ -1,6 +1,6 @@
 /* CARe Auctions — service worker: offline completo, cache-first, solo same-origin.
    Nessuna richiesta esterna viene mai toccata. Versione cache: v1 */
-const CACHE = 'care-auctions-v137';
+const CACHE = 'care-auctions-v143';
 const CORE = [
   './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
   './assets/logo-careauctions-pulito.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png',
@@ -17,17 +17,17 @@ const CORE = [
   './idream.html',
   './prova.html',
   './prova.js',
-  './aste.html', './asta.html', './icare.html', './dashboard.html', './ipartner.html',
-  './privacy.html', './galleria.html', './login.html', './terms.html', './cookie.html',
-  './calcolo.js', './asta.js', './aste.js', './icare.js', './dashboard.js', './login.js',
+  './aste.html', './asta.html', './icare.html', './ipartner.html',
+  './privacy.html', './galleria.html', './terms.html', './cookie.html',
+  './calcolo.js', './asta.js', './aste.js', './icare.js',
   './ipartner.js', './privacy.js', './icare-messages.js', './analisi-store.js',
   './contatti.js', './assets/icons/icon-180.png',
 ];
 
 // RELOAD-AUTO (5.296): appena il nuovo SW prende il controllo, ricarica le pagine aperte (mai più vecchio sito)
-self.addEventListener('controllerchange', function () { if (self.registration) { try { var v = (location.search.match(/swv=(d+)/) || [])[1] || ''; if (v !== '135') { location.replace(location.href.split('#')[0].split('?')[0] + '?swv=135'); } } catch (e) {} } });
+self.addEventListener('controllerchange', function () { if (self.registration) { try { var v = (location.search.match(/swv=(\d+)/) || [])[1] || ''; if (v !== '135') { location.replace(location.href.split('#')[0].split('?')[0] + '?swv=135'); } } catch (e) {} } });
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => Promise.allSettled(CORE.map((u) => c.add(u).catch(function(){}) ))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
