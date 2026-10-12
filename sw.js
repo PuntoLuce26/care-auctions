@@ -1,6 +1,6 @@
 /* CARe Auctions — service worker: offline completo, cache-first, solo same-origin.
    Nessuna richiesta esterna viene mai toccata. Versione cache: v1 */
-const CACHE = 'care-auctions-v136';
+const CACHE = 'care-auctions-v137';
 const CORE = [
   './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
   './assets/logo-careauctions-pulito.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png',
@@ -25,7 +25,7 @@ const CORE = [
 ];
 
 // RELOAD-AUTO (5.296): appena il nuovo SW prende il controllo, ricarica le pagine aperte (mai più vecchio sito)
-self.addEventListener('controllerchange', function () { if (self.registration) { try { if (!localStorage.getItem('sw-reloaded')) { localStorage.setItem('sw-reloaded', String(Date.now())); location.reload(); } } catch (e) {} } });
+self.addEventListener('controllerchange', function () { if (self.registration) { try { var v = (location.search.match(/swv=(d+)/) || [])[1] || ''; if (v !== '135') { location.replace(location.href.split('#')[0].split('?')[0] + '?swv=135'); } } catch (e) {} } });
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });

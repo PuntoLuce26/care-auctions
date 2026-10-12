@@ -26,7 +26,7 @@
     'CONVIENE': { cls: 'v-go', text: 'GO — worth bidding' },
     'NON CONVIENE': { cls: 'v-no', text: 'NO GO — not worth it' },
     'ATTENZIONE': { cls: 'v-warn', text: 'CAUTION — lower your bid' },
-    'NON VALUTABILE': { cls: 'v-na', text: 'CANNOT BE ASSESSED — data missing' }
+    'NON VALUTABILE': { cls: 'v-na', text: 'Inserisci i dati dell immobile qui sotto: la valutazione parte quando i dati ci sono' }
   };
   // Caso reale San Pasquale (dati verificati, gli stessi del prototipo). Tutti gli altri campi restano vuoti = MISSING.
   var ESEMPIO = {
