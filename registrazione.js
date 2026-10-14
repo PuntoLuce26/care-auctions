@@ -57,14 +57,7 @@
           body: JSON.stringify({ azione: 'registrazione', chiave: 'iLuce-regia-2026-segreto', nome: nome, email: email, cellulare: cel, citta: citta, interessi: gusti, lingua: lang })
         }).catch(function () {});
       } catch (err) {}
-      /* 5.211: il pioniere entra nel database Supabase (privacy: solo insert, mai letture pubbliche) */
-      try {
-        fetch('https://gzhfjhmjcqauubemhidx.supabase.co/rest/v1/pionieri', {
-          method: 'POST',
-          headers: { 'apikey': 'sb_publishable__1RO87dmE7rQ82JSJ5Nk4Q_7r21yWj5', 'Authorization': 'Bearer sb_publishable__1RO87dmE7rQ82JSJ5Nk4Q_7r21yWj5', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nome: nome, email: email, cellulare: cel, citta: citta, interessi: gusti })
-        }).catch(function () {});
-      } catch (err) {}
+      
       var gNome = nome.toLowerCase().split(' ')[0]; var maschiA = ['andrea','luca','mattia','nicola','elia']; var femmina = gNome.endsWith('a') && maschiA.indexOf(gNome) < 0;
       esito.textContent = (femmina ? 'Benvenuta tra i pionieri, ' : 'Benvenuto tra i pionieri, ') + nome.split(' ')[0] + '. Controlla la tua casella: la lettera di benvenuto sta arrivando (guarda anche lo spam).';
     });
