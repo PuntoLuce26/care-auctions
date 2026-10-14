@@ -1244,3 +1244,7 @@ body, body.home, .site-header, .page-registrati, .page-registrati .site-header, 
 /* 5.312: TUTTE le voci del menu sempre visibili (via maschere e scorrimento) */
 .header-inner > nav { overflow-x: visible !important; mask-image: none !important; -webkit-mask-image: none !important; margin-inline: 0 !important; }
 .nav-list { flex-wrap: wrap !important; justify-content: center !important; width: auto !important; }
+/* 5.337: home Emergent — kicker e blocchi */
+.home-kicker { letter-spacing: .18em; color: #D4A84B; font-weight: 600; font-size: .85rem; text-transform: uppercase; }
+.home-motto strong { display: inline-block; margin: 0 .3rem; }
+.home-pioneer { text-align: center; margin: 2rem 0; }
