@@ -1248,3 +1248,7 @@ body, body.home, .site-header, .page-registrati, .page-registrati .site-header, 
 .home-kicker { letter-spacing: .18em; color: #D4A84B; font-weight: 600; font-size: .85rem; text-transform: uppercase; }
 .home-motto strong { display: inline-block; margin: 0 .3rem; }
 .home-pioneer { text-align: center; margin: 2rem 0; }
+/* 5.341: banner nuovo sito */
+.nuovo-banner { background:#0F1E3A; color:#F4F1EA; text-align:center; padding:.55rem 1rem; font-size:.9rem; }
+.nuovo-banner a { color:#D4A84B; font-weight:600; text-decoration:none; }
+.header-cta { margin-left:auto; }
