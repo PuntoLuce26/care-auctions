@@ -1,86 +1,97 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'">
-  <title>Disegna la tua zona — iCARe cerca lì · CARe Auctions</title>
-  <meta name="description" content="Disegna sulla mappa l'area dove vuoi la tua casa: iCARe cerca le aste proprio lì.">
-  <link rel="canonical" href="https://careauctions.co/mappa.html">
-  <link rel="stylesheet" href="styles10.css">
-  <style>
-    #tela { width: 100%; max-width: 720px; height: 420px; border: 1px solid #EDEFF2; border-radius: 1rem; background: #FFFFFF; touch-action: none; display: block; }
-    #tela svg { width: 100%; height: 100%; }
-    .zona-fondo { fill: #F1F4F8; stroke: #E3E8EF; }
-    .zone { fill: #FFFFFF; stroke: #D9DFE7; stroke-width: 1; cursor: pointer; }
-    .zone:hover { fill: #EDF1F6; }
-    .scelta { fill: #0F1E3A; opacity: .82; }
-    .etichetta { font-size: 10px; fill: #6B7280; pointer-events: none; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mappa dei contenuti — CARe Auctions</title>
+<meta name="description" content="Mappa completa dei contenuti di CARe Auctions: aste, città, tribunali, date e categorie in 20 lingue.">
+<link rel="stylesheet" href="styles10.css">
 </head>
-<body class="page-registrati"><div class="nuovo-banner">CARe Auctions — il portale più potente al mondo per le aste immobiliari italiane: iCARe, la prima intelligenza specializzata negli acquisti immobiliari, lavora accanto a un consulente umano. Zero fee se non vinci. <a href="https://www.careauctions.co/">Vai al portale →</a></div>
-  <main class="container" id="main">
-    <div class="page-head">
-      <h1>Disegna la tua zona.</h1>
-      <p class="lead">Tocca le zone dove vuoi cercare la casa dei tuoi sogni — iCARe cercherà le aste proprio lì.</p>
-    </div>
-    <div id="tela"></div>
-    <p id="esito" class="lead" style="margin-top:1rem" aria-live="polite"></p>
-    <p><a class="btn btn-primary" id="vai" href="icare.html">Invia a iCARe</a></p>
-  </main>
-  <script>
-    (function () {
-      /* 5.256: mappa stilizzata dell'Italia (SVG zero dipendenze, CSP-safe) — si disegna per zone.
-       * Le forme sono semplificate; il tocco seleziona le regioni da cercare. */
-      var zone = [
-        { n: 'Valle d\u0027Aosta', x: 52, y: 34, w: 26, h: 26 },
-        { n: 'Piemonte', x: 30, y: 56, w: 52, h: 40 },
-        { n: 'Lombardia', x: 66, y: 38, w: 58, h: 34 },
-        { n: 'Trentino', x: 110, y: 24, w: 30, h: 26 },
-        { n: 'Veneto', x: 124, y: 36, w: 44, h: 30 },
-        { n: 'Friuli', x: 168, y: 30, w: 28, h: 26 },
-        { n: 'Liguria', x: 34, y: 96, w: 22, h: 46 },
-        { n: 'Emilia-Romagna', x: 62, y: 78, w: 58, h: 34 },
-        { n: 'Toscana', x: 56, y: 114, w: 46, h: 36 },
-        { n: 'Umbria', x: 104, y: 128, w: 26, h: 28 },
-        { n: 'Marche', x: 130, y: 116, w: 26, h: 32 },
-        { n: 'Lazio', x: 92, y: 160, w: 40, h: 34 },
-        { n: 'Abruzzo', x: 128, y: 148, w: 30, h: 30 },
-        { n: 'Molise', x: 146, y: 178, w: 18, h: 20 },
-        { n: 'Campania', x: 118, y: 196, w: 34, h: 26 },
-        { n: 'Puglia', x: 156, y: 180, w: 32, h: 30 },
-        { n: 'Basilicata', x: 150, y: 214, w: 22, h: 22 },
-        { n: 'Calabria', x: 142, y: 240, w: 24, h: 30 },
-        { n: 'Sicilia', x: 104, y: 268, w: 56, h: 30 },
-        { n: 'Sardegna', x: 22, y: 200, w: 34, h: 30 }
-      ];
-      var scelte = [];
-      var tela = document.getElementById('tela');
-      var svg = '<svg viewBox="0 0 200 320" role="img" aria-label="mappa Italia">';
-      svg += '<rect class="zona-fondo" x="0" y="0" width="200" height="320" rx="12"></rect>';
-      zone.forEach(function (z, i) {
-        svg += '<g><rect class="zone" data-i="' + i + '" x="' + z.x + '" y="' + z.y + '" width="' + z.w + '" height="' + z.h + '" rx="6"></rect>';
-        svg += '<text class="etichetta" x="' + (z.x + 3) + '" y="' + (z.y + z.h / 2 + 3) + '">' + z.n + '</text></g>';
-      });
-      svg += '</svg>';
-      tela.innerHTML = svg;
-      var esito = document.getElementById('esito');
-      var vai = document.getElementById('vai');
-      tela.addEventListener('click', function (ev) {
-        var r = ev.target.closest('.zone');
-        if (!r) return;
-        var i = Number(r.getAttribute('data-i'));
-        var p = scelte.indexOf(i);
-        if (p >= 0) { scelte.splice(p, 1); r.classList.remove('scelta'); }
-        else { scelte.push(i); r.classList.add('scelta'); }
-        var nomi = scelte.map(function (k) { return zone[k].n; });
-        esito.textContent = nomi.length ? ('Zona scelta: ' + nomi.join(', ') + ' — iCARe cercherà le aste qui.') : 'Tocca una o più zone per disegnare la tua area.';
-        try { localStorage.setItem('icare-zone', nomi.join(',')); } catch (e) {}
-        vai.setAttribute('href', 'icare.html?q=' + encodeURIComponent('Cerco casa in: ' + nomi.join(', ')));
-      });
-      try { var z = localStorage.getItem('icare-zone'); if (z) esito.textContent = 'Zona scelta: ' + z + ' — iCARe cercherà le aste qui.'; } catch (e) {}
-    })();
-  </script>
+<body>
+<div class="nuovo-banner">CARe Auctions — il portale italiano di riferimento per le aste immobiliari giudiziarie. <a href="https://www.careauctions.co/">www.careauctions.co</a></div>
+<main id="main" class="container">
+<h1>Mappa dei contenuti</h1>
+<h2>Aste: procedure complete</h2>
+<ul><li><a href="https://careauctions.co/asta-procedura/it/asta-1900273.html">asta-procedura/it/asta-1900273.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-2186125.html">asta-procedura/it/asta-2186125.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-2216287.html">asta-procedura/it/asta-2216287.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4266702.html">asta-procedura/it/asta-4266702.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4314577.html">asta-procedura/it/asta-4314577.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4316981.html">asta-procedura/it/asta-4316981.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4335654.html">asta-procedura/it/asta-4335654.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4336878.html">asta-procedura/it/asta-4336878.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4374271.html">asta-procedura/it/asta-4374271.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4427377.html">asta-procedura/it/asta-4427377.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4429844.html">asta-procedura/it/asta-4429844.html</a></li>
+<li><a href="https://careauctions.co/asta-procedura/it/asta-4433154.html">asta-procedura/it/asta-4433154.html</a></li></ul>
+<h2>Aste per città</h2>
+<ul><li><a href="https://careauctions.co/aste-citta/it/abano-terme.html">aste-citta/it/abano-terme.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/abbasanta.html">aste-citta/it/abbasanta.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/abbiategrasso.html">aste-citta/it/abbiategrasso.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/abetone-cutigliano.html">aste-citta/it/abetone-cutigliano.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acireale.html">aste-citta/it/acireale.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acqualagna.html">aste-citta/it/acqualagna.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acquappesa.html">aste-citta/it/acquappesa.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acquasparta.html">aste-citta/it/acquasparta.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acquaviva-picena.html">aste-citta/it/acquaviva-picena.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/acqui-terme.html">aste-citta/it/acqui-terme.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/adrano.html">aste-citta/it/adrano.html</a></li>
+<li><a href="https://careauctions.co/aste-citta/it/adria.html">aste-citta/it/adria.html</a></li></ul>
+<h2>Aste per tribunale</h2>
+<ul><li><a href="https://careauctions.co/aste-tribunale/it/agrigento.html">aste-tribunale/it/agrigento.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/alessandria.html">aste-tribunale/it/alessandria.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/ancona.html">aste-tribunale/it/ancona.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/aosta.html">aste-tribunale/it/aosta.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/arezzo.html">aste-tribunale/it/arezzo.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/ascoli-piceno.html">aste-tribunale/it/ascoli-piceno.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/asti.html">aste-tribunale/it/asti.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/avellino.html">aste-tribunale/it/avellino.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/avezzano.html">aste-tribunale/it/avezzano.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/bari.html">aste-tribunale/it/bari.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/belluno.html">aste-tribunale/it/belluno.html</a></li>
+<li><a href="https://careauctions.co/aste-tribunale/it/benevento-ex-tribunale-di-ariano-irpino.html">aste-tribunale/it/benevento-ex-tribunale-di-ariano-irpino.html</a></li></ul>
+<h2>Aste per data</h2>
+<ul><li><a href="https://careauctions.co/aste-data/it/2026-10-21.html">aste-data/it/2026-10-21.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-22.html">aste-data/it/2026-10-22.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-23.html">aste-data/it/2026-10-23.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-24.html">aste-data/it/2026-10-24.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-25.html">aste-data/it/2026-10-25.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-26.html">aste-data/it/2026-10-26.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-27.html">aste-data/it/2026-10-27.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-28.html">aste-data/it/2026-10-28.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-29.html">aste-data/it/2026-10-29.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-10-30.html">aste-data/it/2026-10-30.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-11-02.html">aste-data/it/2026-11-02.html</a></li>
+<li><a href="https://careauctions.co/aste-data/it/2026-11-03.html">aste-data/it/2026-11-03.html</a></li></ul>
+<h2>Aste per categoria</h2>
+<ul></ul>
+<h2>Aste per regione</h2>
+<ul><li><a href="https://careauctions.co/regioni/it/abruzzo.html">regioni/it/abruzzo.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/basilicata.html">regioni/it/basilicata.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/calabria.html">regioni/it/calabria.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/campania.html">regioni/it/campania.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/emilia-romagna.html">regioni/it/emilia-romagna.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/friuli-venezia-giulia.html">regioni/it/friuli-venezia-giulia.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/lazio.html">regioni/it/lazio.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/liguria.html">regioni/it/liguria.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/lombardia.html">regioni/it/lombardia.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/marche.html">regioni/it/marche.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/molise.html">regioni/it/molise.html</a></li>
+<li><a href="https://careauctions.co/regioni/it/piemonte.html">regioni/it/piemonte.html</a></li></ul>
+<h2>Aste per tipologia</h2>
+<ul><li><a href="https://careauctions.co/tipi/it/albergo-a-abano-terme.html">tipi/it/albergo-a-abano-terme.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbadia-cerreto.html">tipi/it/albergo-a-abbadia-cerreto.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbadia-lariana.html">tipi/it/albergo-a-abbadia-lariana.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbadia-san-salvatore.html">tipi/it/albergo-a-abbadia-san-salvatore.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbasanta.html">tipi/it/albergo-a-abbasanta.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbateggio.html">tipi/it/albergo-a-abbateggio.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abbiategrasso.html">tipi/it/albergo-a-abbiategrasso.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abetone-cutigliano.html">tipi/it/albergo-a-abetone-cutigliano.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-abriola.html">tipi/it/albergo-a-abriola.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-acate.html">tipi/it/albergo-a-acate.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-accadia.html">tipi/it/albergo-a-accadia.html</a></li>
+<li><a href="https://careauctions.co/tipi/it/albergo-a-acceglio.html">tipi/it/albergo-a-acceglio.html</a></li></ul>
+
+</main>
 </body>
 </html>
